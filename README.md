@@ -11,4 +11,4 @@ The Daily Sillimanian Beta is a simple application enabling Silliman University 
 - Sean Terrence Calzada
 
 ## Sponsors
-Daily Sillimanian is open for sponsorship you can contact us to our [discord](https://discord.gg/rrpBAAFZeM) channel.
+Daily Sillimanian Beta is open for sponsorship you can contact us to our [discord](https://discord.gg/rrpBAAFZeM) channel.
