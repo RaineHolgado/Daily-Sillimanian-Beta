@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1031388613365",
+    "project_id": "daily-sillimanian-beta",
+    "storage_bucket": "daily-sillimanian-beta.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1031388613365:android:a0a9f4a8011a9a0efc13bc",
+        "android_client_info": {
+          "package_name": "org.pyritecrew.dsb"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1031388613365-hjdepnvo8v01muasmikelggk5j5qsv7u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCY5g-VtCZYo8mRUCaabqQZwZBmWAK5_IE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1031388613365-hjdepnvo8v01muasmikelggk5j5qsv7u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
