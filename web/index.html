@@ -27,6 +27,27 @@
   <link rel="manifest" href="manifest.json">
 </head>
 <body>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.4/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyBOQjVLSd-eu7EwE-g_clc6F6w9488gW90",
+      authDomain: "daily-sillimanian-beta.firebaseapp.com",
+      projectId: "daily-sillimanian-beta",
+      storageBucket: "daily-sillimanian-beta.appspot.com",
+      messagingSenderId: "1031388613365",
+      appId: "1:1031388613365:web:74bd71745abee77ffc13bc"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    </script>
+
   <!-- This script installs service_worker.js to provide PWA functionality to
        application. For more information, see:
        https://developers.google.com/web/fundamentals/primers/service-workers -->
