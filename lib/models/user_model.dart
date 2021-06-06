@@ -1,61 +1,20 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'dart:convert';
 
-class UserModel {
-  String? id;
-  String? name;
-  String? email;
-  UserModel({
-    this.id,
-    this.name,
-    this.email,
-  });
+part 'user_model.freezed.dart';
+part 'user_model.g.dart';
 
-  UserModel copyWith({
+UserModel userModelFromJson(String str) => UserModel.fromJson(json.decode(str));
+String userModelToJson(UserModel data) => json.encode(data.toJson());
+
+@freezed
+abstract class UserModel with _$UserModel {
+  const factory UserModel({
     String? id,
     String? name,
     String? email,
-  }) {
-    return UserModel(
-      id: id ?? this.id,
-      name: name ?? this.name,
-      email: email ?? this.email,
-    );
-  }
+  }) = _UserModel;
 
-  Map<String, dynamic> toMap() {
-    return {
-      'id': id,
-      'name': name,
-      'email': email,
-    };
-  }
-
-  factory UserModel.fromMap(Map<String, dynamic>? map) {
-    return UserModel(
-      id: map?['id'],
-      name: map?['name'],
-      email: map?['email'],
-    );
-  }
-
-  String toJson() => json.encode(toMap());
-
-  factory UserModel.fromJson(String source) =>
-      UserModel.fromMap(json.decode(source));
-
-  @override
-  String toString() => 'UserModel(id: $id, name: $name, email: $email)';
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-
-    return other is UserModel &&
-        other.id == id &&
-        other.name == name &&
-        other.email == email;
-  }
-
-  @override
-  int get hashCode => id.hashCode ^ name.hashCode ^ email.hashCode;
+  factory UserModel.fromJson(Map<String, dynamic> json) =>
+      _$UserModelFromJson(json);
 }
