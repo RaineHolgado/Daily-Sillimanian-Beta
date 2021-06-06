@@ -3,12 +3,12 @@ import 'package:daily_sillimanian_beta/screens/startup/startup_view.dart';
 import 'package:flutter/material.dart';
 
 class StartUpPageController extends StatelessWidget {
-  const StartUpPageController({ Key? key }) : super(key: key);
+  const StartUpPageController({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-       // Initialize FlutterFire:
+      // Initialize FlutterFire:
       future: initialization,
       builder: (context, snapshot) {
         // Check for errors
@@ -17,7 +17,9 @@ class StartUpPageController extends StatelessWidget {
           return Scaffold(
             body: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [Text("Something went wrong")],
+              children: [
+                Text("Something went wrong"),
+              ],
             ),
           );
         }
@@ -45,11 +47,12 @@ class StartUpPageController extends StatelessWidget {
         return Scaffold(
           body: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [CircularProgressIndicator()],
+            children: [
+              CircularProgressIndicator(),
+            ],
           ),
         );
       },
-      
     );
   }
 }
