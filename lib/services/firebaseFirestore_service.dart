@@ -9,4 +9,5 @@ class FirebaseFirestoreService {
   FirebaseFirestore firebaseFiretore = FirebaseFirestore.instance;
 
   late final CollectionReference<Map<String, dynamic>> userColRef = firebaseFiretore.collection("Users");
+  late final CollectionReference<Map<String, dynamic>> eventsColRef = firebaseFiretore.collection("Events");
 }
