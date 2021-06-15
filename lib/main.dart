@@ -10,6 +10,7 @@ class DailySillimanBetaApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Daily Sillimanian Beta',
       theme: ThemeData( // TODO - create custom Theme for the app
         primarySwatch: Colors.blue,
