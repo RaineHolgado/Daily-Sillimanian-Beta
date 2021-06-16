@@ -1,3 +1,6 @@
+import 'package:daily_sillimanian_beta/common/app_logo.dart';
+import 'package:daily_sillimanian_beta/common/auth_elevatedbutton.dart';
+import 'package:daily_sillimanian_beta/common/auth_outlinedbutton.dart';
 import 'package:flutter/material.dart';
 
 class StartUpview extends StatelessWidget {
@@ -7,51 +10,49 @@ class StartUpview extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 49),
-          child: Column(
-            children: [
-              Container(
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            Align(
+              alignment: Alignment.topCenter,
+              child: Container(
+                height: 380,
+                // padding: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(47, context)),
                 width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  style: TextButton.styleFrom(backgroundColor: Colors.red),
-                  child: Text("Pressed"),
+                child: AppLogo(),
+              ),
+            ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                height: 300,
+                // padding: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(47, context)),
+                width: double.infinity,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    AuthOutlinedButton(
+                      label: "SIGN IN",
+                      onPressed: () {},
+                    ),
+                    SizedBox(height: 15),
+                    AuthOutlinedButton(
+                      label: "ANONYMOUSLY SIGN IN",
+                      onPressed: () {},
+                    ),
+                    SizedBox(height: 60),
+                    AuthElevatedButton(
+                      label: "SIGN UP",
+                      onPressed: () {},
+                    ),
+                    SizedBox(height: 80),
+                  ],
                 ),
               ),
-              SizedBox(height: 10),
-              InkWell(
-                onTap: () {},
-                child: Container(
-                  color: Colors.red,
-                  height: 40,
-                  width: double.infinity,
-                  child: Text("Button"),
-                ),
-              ),
-              SizedBox(height: 10),
-              GestureDetector(
-                onTap: () {},
-                child: Container(
-                  color: Colors.red,
-                  height: 40,
-                  width: double.infinity,
-                  child: Text("Button"),
-                ),
-              )
-            ],
-          ),
+            )
+          ],
         ),
       ),
     );
-  }
-}
-
-class CustomButton extends StatelessWidget {
-  const CustomButton({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
   }
 }
