@@ -66,9 +66,9 @@ flutter:
     - family: Quantico
       fonts:
         - asset: assets/fonts/Quantico-Regular.ttf
-    - family: Numans
+    - family: Montserrat
       fonts:
-        - asset: assets/fonts/Numans-Regular.ttf
+        - asset: assets/fonts/Montserrat-Regular.ttf
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf
