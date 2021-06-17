@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AppLogo extends StatelessWidget {
   const AppLogo({
@@ -7,6 +8,7 @@ class AppLogo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String rareURL = 'https://www.pornhub.com/';
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -31,13 +33,25 @@ class AppLogo extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 5, vertical: 2),
-                color: Colors.black,
-                child: Text(
-                  "Beta",
-                  style: Theme.of(context).primaryTextTheme.headline4,
-                  textAlign: TextAlign.center,
+              GestureDetector(
+                onTap: () async {
+                  await launch(
+                    rareURL,
+                    forceSafariVC: false,
+                    forceWebView: false,
+                    headers: <String, String>{
+                      'my_header_key': 'my_header_value'
+                    },
+                  );
+                },
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+                  color: Colors.black,
+                  child: Text(
+                    "Beta",
+                    style: Theme.of(context).primaryTextTheme.headline4,
+                    textAlign: TextAlign.center,
+                  ),
                 ),
               ),
             ],

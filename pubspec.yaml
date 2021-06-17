@@ -31,6 +31,7 @@ dependencies:
   flutter_riverpod: ^0.14.0+3
   freezed_annotation: ^0.14.2
   shared_preferences: ^2.0.6
+  url_launcher: ^6.0.6
 
 dev_dependencies:
   flutter_test:
@@ -46,7 +47,6 @@ flutter_native_splash:
   image: assets/images/daily_sillimanian_beta.png # Image path
   android: true
   ios: true
-  
   # Steps
   # flutter clean
   # flutter pub get
