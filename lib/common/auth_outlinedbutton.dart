@@ -20,7 +20,10 @@ class AuthOutlinedButton extends StatelessWidget {
         onPressed: onPressed,
         child: Text(
           label,
-          style: Theme.of(context).primaryTextTheme.button!.copyWith(color: Colors.black),
+          style: Theme.of(context)
+              .primaryTextTheme
+              .button!
+              .copyWith(color: Theme.of(context).primaryColor),
         ),
       ),
     );
