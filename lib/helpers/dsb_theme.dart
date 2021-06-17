@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 // MAIN HANDLER COLOR THEMING
 const ColorScheme colorScheme = ColorScheme(
-  primary: Color(0xFFBB1017),
+  primary: primaryAppcolor,
   primaryVariant:
       Colors.transparent, //No color yet, must be lighter than primary color
   secondary: secondaryAppcolor,
@@ -24,10 +24,32 @@ ThemeData AppTheme(BuildContext context) {
     fontFamily: "Montserrat",
     colorScheme: colorScheme,
     primaryColor: colorScheme.primary,
+    scaffoldBackgroundColor: colorScheme.background,
+    appBarTheme: AppBarTheme(
+      centerTitle: true,
+      elevation: 0,
+      backgroundColor: Colors.white,
+      iconTheme: IconThemeData(
+        color: Colors.black,
+        size: 20,
+      ),
+      titleTextStyle: TextStyle(
+        color: Colors.black,
+        fontSize: 18,
+        fontWeight: FontWeight.w500,
+      ),
+    ),
+    inputDecorationTheme: InputDecorationTheme(
+      hintStyle: TextStyle(
+        fontSize: 16,
+        color: Colors.black45,
+      ),
+      border: InputBorder.none,
+    ),
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: ButtonStyle(
         side: MaterialStateProperty.all(BorderSide(
-          color: secondaryAppcolor,
+          color: colorScheme.primary,
         )),
         shape: MaterialStateProperty.all(RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(5.0),
@@ -36,7 +58,7 @@ ThemeData AppTheme(BuildContext context) {
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all(Color(0xFFBB1017)),
+        backgroundColor: MaterialStateProperty.all(colorScheme.primary),
         shape: MaterialStateProperty.all(RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(5.0),
         )),
@@ -56,7 +78,7 @@ const primaryTextTheme = TextTheme(
     height: 1.2,
     fontSize: 50.0,
     fontWeight: FontWeight.w700,
-    color: Color(0xFFBB1017),
+    color: primaryAppcolor,
   ),
   headline3: TextStyle(
     fontFamily: "Quantico",
@@ -73,8 +95,9 @@ const primaryTextTheme = TextTheme(
     color: Colors.white,
   ),
   button: TextStyle(
+    letterSpacing: 3,
     color: Colors.white,
-    fontSize: 15.0,
-    fontWeight: FontWeight.w400,
+    fontSize: 13.0,
+    fontWeight: FontWeight.w600,
   ),
 );

@@ -1,5 +1,5 @@
 import 'package:daily_sillimanian_beta/helpers/constants.dart';
-import 'package:daily_sillimanian_beta/screens/startup/startup_view.dart';
+import 'package:daily_sillimanian_beta/screens/start_up/startup_view.dart';
 import 'package:flutter/material.dart';
 
 class StartUpPageController extends StatelessWidget {
