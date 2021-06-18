@@ -1,12 +1,12 @@
 import 'package:daily_sillimanian_beta/common/app_logo.dart';
 import 'package:daily_sillimanian_beta/common/auth_elevatedbutton.dart';
 import 'package:daily_sillimanian_beta/common/auth_outlinedbutton.dart';
-import 'package:daily_sillimanian_beta/screens/sign_in/signin_view.dart';
-import 'package:daily_sillimanian_beta/screens/sign_up/signup_view.dart';
 import 'package:flutter/material.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:daily_sillimanian_beta/app/router.gr.dart';
 
-class StartUpview extends StatelessWidget {
-  const StartUpview({Key? key}) : super(key: key);
+class StartUpView extends StatelessWidget {
+  const StartUpView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,11 +21,11 @@ class StartUpview extends StatelessWidget {
                 height: 320,
                 width: 250,
                 decoration: BoxDecoration(
-                    image: DecorationImage(
-                        fit: BoxFit.contain,
-                        image: AssetImage(
-                            "assets/images/daily_sillimanian_beta.png"))),
-                // child: AppLogo(),
+                  image: DecorationImage(
+                      fit: BoxFit.contain,
+                      image: AssetImage(
+                          "assets/images/daily_sillimanian_beta.png")),
+                ),
               ),
             ),
             Align(
@@ -39,20 +39,14 @@ class StartUpview extends StatelessWidget {
                     AuthElevatedButton(
                       label: "SIGN IN",
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => SignInview()),
-                        );
+                        context.router.navigate(SignUpRoute());
                       },
                     ),
                     SizedBox(height: 15),
                     AuthOutlinedButton(
                       label: "SIGN UP",
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => SignUpview()),
-                        );
+                        context.router.navigate(SignInRoute());
                       },
                     ),
                     SizedBox(height: 40),
@@ -60,7 +54,9 @@ class StartUpview extends StatelessWidget {
                       width: 262,
                       alignment: Alignment.center,
                       child: GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          context.router.navigate(HomeBuilderRoute());
+                        },
                         child: Text(
                           "SIGN IN ANONYMOUSLY",
                           style: TextStyle(

@@ -3,10 +3,11 @@ import 'package:daily_sillimanian_beta/common/auth_elevatedbutton.dart';
 import 'package:daily_sillimanian_beta/common/auth_textformfield.dart';
 import 'package:daily_sillimanian_beta/common/auth_underlinebutton.dart';
 import 'package:daily_sillimanian_beta/common/dsb_scaffold.dart';
-import 'package:daily_sillimanian_beta/screens/sign_up/signup_view.dart';
 import 'package:flutter/material.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:daily_sillimanian_beta/app/router.gr.dart';
 
-class SignInview extends StatelessWidget {
+class SignInView extends StatelessWidget {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
@@ -59,18 +60,18 @@ class SignInview extends StatelessWidget {
                   SizedBox(height: 35),
                   AuthElevatedButton(
                     label: "LOGIN",
-                    onPressed: () {},
+                    onPressed: () {
+                                            context.router.navigate(HomeBuilderRoute());
+
+                    },
                   ),
-                  SizedBox(height: 8),
+                  SizedBox(height: 12),
                   AuthUnderLineButton(
                       label: "REGISTER",
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => SignUpview()),
-                        );
+                        context.router.navigate(SignUpRoute());
                       }),
-                  SizedBox(height: 70),
+                  SizedBox(height: 65),
                 ],
               ),
             ],
