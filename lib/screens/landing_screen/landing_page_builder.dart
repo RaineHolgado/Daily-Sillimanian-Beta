@@ -1,9 +1,9 @@
 import 'package:daily_sillimanian_beta/helpers/constants.dart';
-import 'package:daily_sillimanian_beta/screens/start_up/startup_view.dart';
+import 'package:daily_sillimanian_beta/screens/landing_screen/start_up/startup_view.dart';
 import 'package:flutter/material.dart';
 
-class StartUpPageController extends StatelessWidget {
-  const StartUpPageController({Key? key}) : super(key: key);
+class LandingPageBuilder extends StatelessWidget {
+  const LandingPageBuilder({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +40,7 @@ class StartUpPageController extends StatelessWidget {
           //     return StartUpVIew();
           // }
 
-          return StartUpview(); // direct navigate here for now until further features
+          return StartUpView(); // direct navigate here for now until further features
         }
 
         // Otherwise, show something is waiting for initialization to complete
