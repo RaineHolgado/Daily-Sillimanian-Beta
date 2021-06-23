@@ -1,3 +1,5 @@
+<p align="center"><img src="https://raw.githubusercontent.com/TezadaConnect/dsb-branding/main/branding-img/branding.png"></p>
+
 # Daily Sillimanian Beta
 The Daily Sillimanian Beta is a simple application enabling Silliman University organizations to Manage or share activities and events to all the app users. Lead by software developer Raine Dale Holgado, an alumni of the said university.
 
