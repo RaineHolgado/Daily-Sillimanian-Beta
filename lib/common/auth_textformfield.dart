@@ -32,11 +32,24 @@ class InputTextFormField extends StatefulWidget {
 
 class _InputTextFormFieldState extends State<InputTextFormField> {
   late bool isPassword = widget.password;
+  final _focusNode = FocusNode();
+  bool isFilled = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _focusNode.addListener(() {
+      print("Has focus: ${_focusNode.hasFocus}");
+      setState(() {
+        isFilled = !isFilled;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 262,
+      width: 280,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -49,31 +62,49 @@ class _InputTextFormFieldState extends State<InputTextFormField> {
           ),
           SizedBox(height: 8),
           Container(
-            height: 43,
+            // height: 45,
             child: TextFormField(
+              focusNode: _focusNode,
               key: widget.valueKey,
               controller: widget.controller,
               cursorWidth: 0.5,
               autofocus: widget.autofocus,
               obscureText: isPassword,
               decoration: InputDecoration(
-                filled: true,
-                fillColor: Color(0xFFF3F3F3),
-                suffixIcon: widget.password
-                    ? GestureDetector(
-                        onTap: () => setState(() {
-                          isPassword = !isPassword;
-                        }),
-                        child: Icon(
-                            isPassword
-                                ? Icons.visibility_off
-                                : Icons.visibility,
-                            color: Colors.black,
-                            size: 23),
-                      )
-                    : null,
-                hintText: widget.hintText,
-              ),
+                  filled: isFilled,
+                  fillColor: Color(0xFFF3F3F3),
+                  suffixIcon: widget.password
+                      ? GestureDetector(
+                          onTap: () => setState(() {
+                            isPassword = !isPassword;
+                          }),
+                          child: Icon(
+                              isPassword
+                                  ? Icons.visibility_off
+                                  : Icons.visibility,
+                              color: Colors.black,
+                              size: 23),
+                        )
+                      : null,
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.black),
+                    borderRadius: BorderRadius.circular(5.0),
+                  ),
+                  // enabledBorder: OutlineInputBorder(
+                  //   borderSide: BorderSide(color: Colors.pink),
+                  //   borderRadius: BorderRadius.circular(5.0),
+                  // ),
+                  focusedErrorBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.red),
+                    borderRadius: BorderRadius.circular(5.0),
+                  ),
+                  errorBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.red),
+                    borderRadius: BorderRadius.circular(5.0),
+                  ),
+                  hintText: widget.hintText,
+                  contentPadding: EdgeInsets.only(
+                      left: 12, right: 12, top: 15, bottom: 15)),
               validator: widget.validator,
               onFieldSubmitted: widget.onFieldSubmitted,
             ),
@@ -81,5 +112,11 @@ class _InputTextFormFieldState extends State<InputTextFormField> {
         ],
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _focusNode.dispose();
+    super.dispose();
   }
 }

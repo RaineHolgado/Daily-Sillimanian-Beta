@@ -25,6 +25,7 @@ ThemeData AppTheme(BuildContext context) {
     colorScheme: colorScheme,
     primaryColor: colorScheme.primary,
     scaffoldBackgroundColor: colorScheme.background,
+    textSelectionTheme: TextSelectionThemeData(cursorColor: Colors.black),
     appBarTheme: AppBarTheme(
       centerTitle: true,
       elevation: 0,
@@ -70,7 +71,8 @@ ThemeData AppTheme(BuildContext context) {
   );
 }
 
-// https://api.flutter.dev/flutter/material/TextTheme-class.html
+// Sizes References: https://api.flutter.dev/flutter/material/TextTheme-class.html
+// Responsive Sizing: https://www.youtube.com/watch?v=LWteDQes4Kk&t=831s
 const primaryTextTheme = TextTheme(
   headline2: TextStyle(
     fontFamily: "Quantico",

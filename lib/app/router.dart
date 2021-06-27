@@ -4,8 +4,8 @@ import 'package:daily_sillimanian_beta/screens/home_screen/events/events_view.da
 import 'package:daily_sillimanian_beta/screens/home_screen/home_builder_view.dart';
 import 'package:daily_sillimanian_beta/screens/home_screen/orgs/orgs_view.dart';
 import 'package:daily_sillimanian_beta/screens/landing_screen/landing_page_builder.dart';
-import 'package:daily_sillimanian_beta/screens/landing_screen/login/signin_view.dart';
-import 'package:daily_sillimanian_beta/screens/landing_screen/register/signup_view.dart';
+import 'package:daily_sillimanian_beta/screens/landing_screen/login/login_view.dart';
+import 'package:daily_sillimanian_beta/screens/landing_screen/register/register_view.dart';
 import 'package:daily_sillimanian_beta/screens/landing_screen/start_up/startup_view.dart';
 
 @AdaptiveAutoRouter(
@@ -13,8 +13,8 @@ import 'package:daily_sillimanian_beta/screens/landing_screen/start_up/startup_v
   routes: [
     AutoRoute(page: LandingPageBuilder, initial: true),
     AutoRoute(page: StartUpView),
-    AutoRoute(page: SignInView),
-    AutoRoute(page: SignUpView),
+    AutoRoute(page: LoginView),
+    AutoRoute(page: RegisterView),
     AutoRoute(
       page: HomeBuilderView,
       children: [

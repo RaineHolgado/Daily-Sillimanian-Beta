@@ -24,7 +24,13 @@ class DsbScaffold extends StatelessWidget {
               )
             : null,
       ),
-      body: body,
+      body: GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: () {
+          FocusScope.of(context).requestFocus(new FocusNode());
+        },
+        child: body,
+      ),
     );
   }
 }

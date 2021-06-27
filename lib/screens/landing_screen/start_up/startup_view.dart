@@ -4,6 +4,7 @@ import 'package:daily_sillimanian_beta/common/auth_outlinedbutton.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:daily_sillimanian_beta/app/router.gr.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class StartUpView extends StatelessWidget {
   const StartUpView({Key? key}) : super(key: key);
@@ -17,15 +18,26 @@ class StartUpView extends StatelessWidget {
           children: [
             Align(
               alignment: Alignment.topCenter,
-              child: Container(
-                height: 320,
-                width: 250,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                      fit: BoxFit.contain,
-                      image: AssetImage(
-                          "assets/images/daily_sillimanian_beta.png")),
-                ),
+              child: Column(
+                children: [
+                  SizedBox(height: 80),
+                  Text(
+                    "WELCOME TO",
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                  SizedBox(height: 25),
+                  Container(
+                    height: 320,
+                    width: 250,
+                    child: SvgPicture.asset(
+                      "assets/images/dark-text-logo.svg",
+                      alignment: Alignment.topCenter,
+                    ),
+                  )
+                ],
               ),
             ),
             Align(
@@ -37,25 +49,33 @@ class StartUpView extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     AuthElevatedButton(
-                      label: "SIGN IN",
+                      label: "LOGIN",
                       onPressed: () {
-                        context.router.navigate(SignUpRoute());
+                        context.router.push(LoginRoute());
                       },
                     ),
                     SizedBox(height: 15),
-                    AuthOutlinedButton(
-                      label: "SIGN UP",
+                    AuthElevatedButton(
+                      label: "REGISTER",
+                      style: ElevatedButtonTheme.of(context).style!.copyWith(
+                            backgroundColor:
+                                MaterialStateProperty.all(Color(0xFFE6E6E6)),
+                          ),
+                      labeltStyle: Theme.of(context)
+                          .primaryTextTheme
+                          .button!
+                          .copyWith(color: Colors.black),
                       onPressed: () {
-                        context.router.navigate(SignInRoute());
+                        context.router.push(RegisterRoute());
                       },
                     ),
                     SizedBox(height: 40),
                     Container(
-                      width: 262,
+                      width: 280,
                       alignment: Alignment.center,
                       child: GestureDetector(
                         onTap: () {
-                          context.router.navigate(HomeBuilderRoute());
+                          context.router.push(HomeBuilderRoute());
                         },
                         child: Text(
                           "SIGN IN ANONYMOUSLY",
