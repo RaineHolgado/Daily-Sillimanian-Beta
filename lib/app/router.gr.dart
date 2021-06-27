@@ -59,7 +59,7 @@ class AppRouter extends _i1.RootStackRouter {
         builder: (_) {
           return const _i8.HomeView();
         },
-        transitionsBuilder: _i1.TransitionsBuilders.zoomIn,
+        transitionsBuilder: _i1.TransitionsBuilders.fadeIn,
         opaque: true,
         barrierDismissible: false),
     OrganizationRoute.name: (routeData) => _i1.CustomPage<dynamic>(
@@ -67,7 +67,7 @@ class AppRouter extends _i1.RootStackRouter {
         builder: (_) {
           return const _i9.OrganizationView();
         },
-        transitionsBuilder: _i1.TransitionsBuilders.zoomIn,
+        transitionsBuilder: _i1.TransitionsBuilders.fadeIn,
         opaque: true,
         barrierDismissible: false),
     InboxRoute.name: (routeData) => _i1.CustomPage<dynamic>(
@@ -75,7 +75,7 @@ class AppRouter extends _i1.RootStackRouter {
         builder: (_) {
           return const _i10.InboxView();
         },
-        transitionsBuilder: _i1.TransitionsBuilders.zoomIn,
+        transitionsBuilder: _i1.TransitionsBuilders.fadeIn,
         opaque: true,
         barrierDismissible: false)
   };
