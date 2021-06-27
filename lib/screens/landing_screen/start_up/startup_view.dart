@@ -51,7 +51,7 @@ class StartUpView extends StatelessWidget {
                     AuthElevatedButton(
                       label: "LOGIN",
                       onPressed: () {
-                        context.router.push(RegisterRoute());
+                        context.router.push(LoginRoute());
                       },
                     ),
                     SizedBox(height: 15),
@@ -69,12 +69,6 @@ class StartUpView extends StatelessWidget {
                         context.router.push(RegisterRoute());
                       },
                     ),
-                    // AuthOutlinedButton(
-                    //   label: "REGISTER",
-                    //   onPressed: () {
-                    //     context.router.navigate(SignInRoute());
-                    //   },
-                    // ),
                     SizedBox(height: 40),
                     Container(
                       width: 280,

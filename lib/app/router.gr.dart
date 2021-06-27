@@ -75,8 +75,8 @@ class AppRouter extends _i1.RootStackRouter {
   List<_i1.RouteConfig> get routes => [
         _i1.RouteConfig(LandingPageBuilder.name, path: '/'),
         _i1.RouteConfig(StartUpRoute.name, path: '/start-up-view'),
-        _i1.RouteConfig(LoginRoute.name, path: '/sign-in-view'),
-        _i1.RouteConfig(RegisterRoute.name, path: '/sign-up-view'),
+        _i1.RouteConfig(LoginRoute.name, path: '/login-view'),
+        _i1.RouteConfig(RegisterRoute.name, path: '/register-view'),
         _i1.RouteConfig(HomeBuilderRoute.name,
             path: '/home-builder-view',
             children: [
@@ -104,13 +104,13 @@ class StartUpRoute extends _i1.PageRouteInfo {
 }
 
 class LoginRoute extends _i1.PageRouteInfo {
-  const LoginRoute() : super(name, path: '/sign-in-view');
+  const LoginRoute() : super(name, path: '/login-view');
 
   static const String name = 'LoginRoute';
 }
 
 class RegisterRoute extends _i1.PageRouteInfo {
-  const RegisterRoute() : super(name, path: '/sign-up-view');
+  const RegisterRoute() : super(name, path: '/register-view');
 
   static const String name = 'RegisterRoute';
 }
