@@ -10,7 +10,7 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  late PageController pageController = PageController(initialPage: 0);
+  // late PageController pageController = PageController(initialPage: 0);
 
   // @override
   // void initState() {
@@ -20,16 +20,16 @@ class _HomeViewState extends State<HomeView> {
   //   super.initState();
   // }
 
-  @override
-  void didChangeDependencies() {
-    EventsProvider _eventsProvider = context.read(eventsProvider);
-    WidgetsBinding.instance?.addPersistentFrameCallback((_) {
-      if (_eventsProvider.selectedPageIndex != pageController.page?.floor()) {
-        pageController.jumpToPage(_eventsProvider.selectedPageIndex);
-      }
-    });
-    super.didChangeDependencies();
-  }
+  // @override
+  // void didChangeDependencies() {
+  //   EventsProvider _eventsProvider = context.read(eventsProvider);
+  //   WidgetsBinding.instance?.addPersistentFrameCallback((_) {
+  //     if (_eventsProvider.selectedPageIndex != pageController.page?.floor()) {
+  //       pageController.jumpToPage(_eventsProvider.selectedPageIndex);
+  //     }
+  //   });
+  //   super.didChangeDependencies();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -60,18 +60,19 @@ class _HomeViewState extends State<HomeView> {
             ),
             Expanded(
               child: Container(
-                child: PageView(
-                  physics: NeverScrollableScrollPhysics(),
-                  controller: pageController,
-                  children: [
-                    Container(
-                      color: Colors.red,
-                    ),
-                    Container(
-                      color: Colors.blue,
-                    )
-                  ],
-                ),
+                color: Colors.amber,
+                // child: PageView(
+                //   physics: NeverScrollableScrollPhysics(),
+                //   controller: pageController,
+                //   children: [
+                //     Container(
+                //       color: Colors.red,
+                //     ),
+                //     Container(
+                //       color: Colors.blue,
+                //     )
+                //   ],
+                // ),
               ),
             ),
           ],

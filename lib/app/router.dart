@@ -22,17 +22,17 @@ import 'package:daily_sillimanian_beta/screens/tab_navigation/organization/orgs_
         CustomRoute(
           path: 'home',
           page: HomeView,
-          transitionsBuilder: TransitionsBuilders.zoomIn,
+          transitionsBuilder: TransitionsBuilders.fadeIn,
         ),
         CustomRoute(
           path: 'organization',
           page: OrganizationView,
-          transitionsBuilder: TransitionsBuilders.zoomIn,
+          transitionsBuilder: TransitionsBuilders.fadeIn,
         ),
         CustomRoute(
           path: 'inbox',
           page: InboxView,
-          transitionsBuilder: TransitionsBuilders.zoomIn,
+          transitionsBuilder: TransitionsBuilders.fadeIn,
         ),
         // AutoRoute(path: 'inbox', page: InboxView),
       ],
