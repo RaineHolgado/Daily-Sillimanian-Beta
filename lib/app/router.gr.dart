@@ -5,14 +5,6 @@
 // **************************************************************************
 
 import 'package:auto_route/auto_route.dart' as _i1;
-import 'package:daily_sillimanian_beta/screens/home_screen/activities/activities_view.dart'
-    as _i9;
-import 'package:daily_sillimanian_beta/screens/home_screen/events/events_view.dart'
-    as _i8;
-import 'package:daily_sillimanian_beta/screens/home_screen/home_builder_view.dart'
-    as _i7;
-import 'package:daily_sillimanian_beta/screens/home_screen/orgs/orgs_view.dart'
-    as _i10;
 import 'package:daily_sillimanian_beta/screens/landing_screen/landing_page_builder.dart'
     as _i3;
 import 'package:daily_sillimanian_beta/screens/landing_screen/login/login_view.dart'
@@ -21,6 +13,14 @@ import 'package:daily_sillimanian_beta/screens/landing_screen/register/register_
     as _i6;
 import 'package:daily_sillimanian_beta/screens/landing_screen/start_up/startup_view.dart'
     as _i4;
+import 'package:daily_sillimanian_beta/screens/tab_navigation/home/home_view.dart'
+    as _i8;
+import 'package:daily_sillimanian_beta/screens/tab_navigation/inbox/inbox_view.dart'
+    as _i10;
+import 'package:daily_sillimanian_beta/screens/tab_navigation/organization/orgs_view.dart'
+    as _i9;
+import 'package:daily_sillimanian_beta/screens/tab_navigation/tabNavigation_builder_view.dart'
+    as _i7;
 import 'package:flutter/material.dart' as _i2;
 
 class AppRouter extends _i1.RootStackRouter {
@@ -49,26 +49,35 @@ class AppRouter extends _i1.RootStackRouter {
         builder: (_) {
           return _i6.RegisterView();
         }),
-    HomeBuilderRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
+    TabNavigationBuilderRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return const _i7.HomeBuilderView();
+          return const _i7.TabNavigationBuilderView();
         }),
-    EventsRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
+    HomeRoute.name: (routeData) => _i1.CustomPage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return const _i8.EventsView();
-        }),
-    ActivitiesRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
+          return const _i8.HomeView();
+        },
+        transitionsBuilder: _i1.TransitionsBuilders.zoomIn,
+        opaque: true,
+        barrierDismissible: false),
+    OrganizationRoute.name: (routeData) => _i1.CustomPage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return const _i9.ActivitiesView();
-        }),
-    OrgsRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
+          return const _i9.OrganizationView();
+        },
+        transitionsBuilder: _i1.TransitionsBuilders.zoomIn,
+        opaque: true,
+        barrierDismissible: false),
+    InboxRoute.name: (routeData) => _i1.CustomPage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return const _i10.OrgsView();
-        })
+          return const _i10.InboxView();
+        },
+        transitionsBuilder: _i1.TransitionsBuilders.zoomIn,
+        opaque: true,
+        barrierDismissible: false)
   };
 
   @override
@@ -77,14 +86,14 @@ class AppRouter extends _i1.RootStackRouter {
         _i1.RouteConfig(StartUpRoute.name, path: '/start-up-view'),
         _i1.RouteConfig(LoginRoute.name, path: '/login-view'),
         _i1.RouteConfig(RegisterRoute.name, path: '/register-view'),
-        _i1.RouteConfig(HomeBuilderRoute.name,
-            path: '/home-builder-view',
+        _i1.RouteConfig(TabNavigationBuilderRoute.name,
+            path: '/tab-navigation-builder-view',
             children: [
               _i1.RouteConfig('#redirect',
-                  path: '', redirectTo: 'events', fullMatch: true),
-              _i1.RouteConfig(EventsRoute.name, path: 'events'),
-              _i1.RouteConfig(ActivitiesRoute.name, path: 'activities'),
-              _i1.RouteConfig(OrgsRoute.name, path: 'orgs')
+                  path: '', redirectTo: 'home', fullMatch: true),
+              _i1.RouteConfig(HomeRoute.name, path: 'home'),
+              _i1.RouteConfig(OrganizationRoute.name, path: 'organization'),
+              _i1.RouteConfig(InboxRoute.name, path: 'inbox')
             ]),
         _i1.RouteConfig('*#redirect',
             path: '*', redirectTo: '/', fullMatch: true)
@@ -115,27 +124,28 @@ class RegisterRoute extends _i1.PageRouteInfo {
   static const String name = 'RegisterRoute';
 }
 
-class HomeBuilderRoute extends _i1.PageRouteInfo {
-  const HomeBuilderRoute({List<_i1.PageRouteInfo>? children})
-      : super(name, path: '/home-builder-view', initialChildren: children);
+class TabNavigationBuilderRoute extends _i1.PageRouteInfo {
+  const TabNavigationBuilderRoute({List<_i1.PageRouteInfo>? children})
+      : super(name,
+            path: '/tab-navigation-builder-view', initialChildren: children);
 
-  static const String name = 'HomeBuilderRoute';
+  static const String name = 'TabNavigationBuilderRoute';
 }
 
-class EventsRoute extends _i1.PageRouteInfo {
-  const EventsRoute() : super(name, path: 'events');
+class HomeRoute extends _i1.PageRouteInfo {
+  const HomeRoute() : super(name, path: 'home');
 
-  static const String name = 'EventsRoute';
+  static const String name = 'HomeRoute';
 }
 
-class ActivitiesRoute extends _i1.PageRouteInfo {
-  const ActivitiesRoute() : super(name, path: 'activities');
+class OrganizationRoute extends _i1.PageRouteInfo {
+  const OrganizationRoute() : super(name, path: 'organization');
 
-  static const String name = 'ActivitiesRoute';
+  static const String name = 'OrganizationRoute';
 }
 
-class OrgsRoute extends _i1.PageRouteInfo {
-  const OrgsRoute() : super(name, path: 'orgs');
+class InboxRoute extends _i1.PageRouteInfo {
+  const InboxRoute() : super(name, path: 'inbox');
 
-  static const String name = 'OrgsRoute';
+  static const String name = 'InboxRoute';
 }
