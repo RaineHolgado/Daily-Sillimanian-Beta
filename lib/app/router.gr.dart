@@ -15,9 +15,9 @@ import 'package:daily_sillimanian_beta/screens/home_screen/orgs/orgs_view.dart'
     as _i10;
 import 'package:daily_sillimanian_beta/screens/landing_screen/landing_page_builder.dart'
     as _i3;
-import 'package:daily_sillimanian_beta/screens/landing_screen/login/signin_view.dart'
+import 'package:daily_sillimanian_beta/screens/landing_screen/login/login_view.dart'
     as _i5;
-import 'package:daily_sillimanian_beta/screens/landing_screen/register/signup_view.dart'
+import 'package:daily_sillimanian_beta/screens/landing_screen/register/register_view.dart'
     as _i6;
 import 'package:daily_sillimanian_beta/screens/landing_screen/start_up/startup_view.dart'
     as _i4;
@@ -39,15 +39,15 @@ class AppRouter extends _i1.RootStackRouter {
         builder: (_) {
           return const _i4.StartUpView();
         }),
-    SignInRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
+    LoginRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i5.SignInView();
+          return _i5.LoginView();
         }),
-    SignUpRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
+    RegisterRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i6.SignUpView();
+          return _i6.RegisterView();
         }),
     HomeBuilderRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
@@ -75,8 +75,8 @@ class AppRouter extends _i1.RootStackRouter {
   List<_i1.RouteConfig> get routes => [
         _i1.RouteConfig(LandingPageBuilder.name, path: '/'),
         _i1.RouteConfig(StartUpRoute.name, path: '/start-up-view'),
-        _i1.RouteConfig(SignInRoute.name, path: '/sign-in-view'),
-        _i1.RouteConfig(SignUpRoute.name, path: '/sign-up-view'),
+        _i1.RouteConfig(LoginRoute.name, path: '/sign-in-view'),
+        _i1.RouteConfig(RegisterRoute.name, path: '/sign-up-view'),
         _i1.RouteConfig(HomeBuilderRoute.name,
             path: '/home-builder-view',
             children: [
@@ -103,16 +103,16 @@ class StartUpRoute extends _i1.PageRouteInfo {
   static const String name = 'StartUpRoute';
 }
 
-class SignInRoute extends _i1.PageRouteInfo {
-  const SignInRoute() : super(name, path: '/sign-in-view');
+class LoginRoute extends _i1.PageRouteInfo {
+  const LoginRoute() : super(name, path: '/sign-in-view');
 
-  static const String name = 'SignInRoute';
+  static const String name = 'LoginRoute';
 }
 
-class SignUpRoute extends _i1.PageRouteInfo {
-  const SignUpRoute() : super(name, path: '/sign-up-view');
+class RegisterRoute extends _i1.PageRouteInfo {
+  const RegisterRoute() : super(name, path: '/sign-up-view');
 
-  static const String name = 'SignUpRoute';
+  static const String name = 'RegisterRoute';
 }
 
 class HomeBuilderRoute extends _i1.PageRouteInfo {

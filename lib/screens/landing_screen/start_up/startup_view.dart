@@ -51,7 +51,7 @@ class StartUpView extends StatelessWidget {
                     AuthElevatedButton(
                       label: "LOGIN",
                       onPressed: () {
-                        context.router.navigate(SignUpRoute());
+                        context.router.push(RegisterRoute());
                       },
                     ),
                     SizedBox(height: 15),
@@ -66,7 +66,7 @@ class StartUpView extends StatelessWidget {
                           .button!
                           .copyWith(color: Colors.black),
                       onPressed: () {
-                        context.router.navigate(SignUpRoute());
+                        context.router.push(RegisterRoute());
                       },
                     ),
                     // AuthOutlinedButton(
@@ -77,11 +77,11 @@ class StartUpView extends StatelessWidget {
                     // ),
                     SizedBox(height: 40),
                     Container(
-                      width: 262,
+                      width: 280,
                       alignment: Alignment.center,
                       child: GestureDetector(
                         onTap: () {
-                          context.router.navigate(HomeBuilderRoute());
+                          context.router.push(HomeBuilderRoute());
                         },
                         child: Text(
                           "SIGN IN ANONYMOUSLY",

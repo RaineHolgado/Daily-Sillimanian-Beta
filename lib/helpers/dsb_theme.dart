@@ -25,6 +25,7 @@ ThemeData AppTheme(BuildContext context) {
     colorScheme: colorScheme,
     primaryColor: colorScheme.primary,
     scaffoldBackgroundColor: colorScheme.background,
+    textSelectionTheme: TextSelectionThemeData(cursorColor: Colors.black),
     appBarTheme: AppBarTheme(
       centerTitle: true,
       elevation: 0,

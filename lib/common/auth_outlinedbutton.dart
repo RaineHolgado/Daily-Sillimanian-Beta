@@ -13,8 +13,8 @@ class AuthOutlinedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 43,
-      width: 262,
+      height: 45,
+      width: 280,
       child: OutlinedButton(
         style: OutlinedButtonTheme.of(context).style,
         onPressed: onPressed,

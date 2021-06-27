@@ -1,4 +1,6 @@
 import 'package:daily_sillimanian_beta/helpers/constants.dart';
+import 'package:daily_sillimanian_beta/screens/landing_screen/login/login_view.dart';
+import 'package:daily_sillimanian_beta/screens/landing_screen/register/register_view.dart';
 import 'package:daily_sillimanian_beta/screens/landing_screen/start_up/startup_view.dart';
 import 'package:flutter/material.dart';
 
@@ -7,6 +9,7 @@ class LandingPageBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // return RegisterView();
     return FutureBuilder(
       // Initialize FlutterFire:
       future: initialization,
