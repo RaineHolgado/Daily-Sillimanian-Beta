@@ -70,7 +70,8 @@ ThemeData AppTheme(BuildContext context) {
   );
 }
 
-// https://api.flutter.dev/flutter/material/TextTheme-class.html
+// Sizes References: https://api.flutter.dev/flutter/material/TextTheme-class.html
+// Responsive Sizing: https://www.youtube.com/watch?v=LWteDQes4Kk&t=831s
 const primaryTextTheme = TextTheme(
   headline2: TextStyle(
     fontFamily: "Quantico",

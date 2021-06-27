@@ -3,11 +3,15 @@ import 'package:flutter/material.dart';
 class AuthElevatedButton extends StatelessWidget {
   final String label;
   final Function() onPressed;
+  final ButtonStyle? style;
+  final TextStyle? labeltStyle;
 
   const AuthElevatedButton({
     Key? key,
     required this.label,
     required this.onPressed,
+    this.style,
+    this.labeltStyle,
   }) : super(key: key);
 
   @override
@@ -16,11 +20,11 @@ class AuthElevatedButton extends StatelessWidget {
       height: 43,
       width: 262,
       child: ElevatedButton(
-        style: ElevatedButtonTheme.of(context).style,
+        style: style ?? ElevatedButtonTheme.of(context).style,
         onPressed: onPressed,
         child: Text(
           label,
-          style: Theme.of(context).primaryTextTheme.button,
+          style: labeltStyle ?? Theme.of(context).primaryTextTheme.button,
         ),
       ),
     );
