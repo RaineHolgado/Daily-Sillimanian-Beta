@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-class OrgsView extends StatelessWidget {
-  const OrgsView({Key? key}) : super(key: key);
+class InboxView extends StatelessWidget {
+  const InboxView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    print("object OrgsView");
+    print("object InboxView");
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Text(
-          "ORGS",
+          "INBOX",
           style: Theme.of(context).appBarTheme.titleTextStyle,
         ),
         actions: [
@@ -26,9 +26,9 @@ class OrgsView extends StatelessWidget {
         ],
       ),
       body: Container(
-        color: Colors.blueAccent,
+        color: Colors.purple,
         child: Center(
-          child: Text("OrgsView"),
+          child: Text("InboxView"),
         ),
       ),
     );

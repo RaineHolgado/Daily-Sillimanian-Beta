@@ -17,22 +17,22 @@ class TabNavigationItem {
 
   static List<TabNavigationItem> get items => [
         TabNavigationItem(
-          page: EventsRoute(),
-          icon: Icon(Icons.bookmark_border),
-          activeIcon: Icon(Icons.bookmark),
-          title: "Events",
+          page: HomeRoute(),
+          icon: Icon(Icons.home, color: Color(0xFF555555)),
+          activeIcon: Icon(Icons.home, color: Color(0xFFBB1017)),
+          title: "Home",
         ),
         TabNavigationItem(
-          page: ActivitiesRoute(),
-          icon: Icon(Icons.insert_invitation),
-          activeIcon: Icon(Icons.insert_invitation_outlined),
-          title: "Activities",
+          page: OrganizationRoute(),
+          icon: Icon(Icons.people, color: Color(0xFF555555)),
+          activeIcon: Icon(Icons.people, color: Color(0xFFBB1017)),
+          title: "Organization",
         ),
         TabNavigationItem(
-          page: OrgsRoute(),
-          icon: Icon(Icons.device_hub),
-          activeIcon: Icon(Icons.device_hub),
-          title: "Orgs",
+          page: InboxRoute(),
+          icon: Icon(Icons.folder, color: Color(0xFF555555)),
+          activeIcon: Icon(Icons.folder, color: Color(0xFFBB1017)),
+          title: "Inbox",
         ),
       ];
 }

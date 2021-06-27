@@ -1,17 +1,15 @@
-import 'package:daily_sillimanian_beta/app/router.gr.dart';
 import 'package:daily_sillimanian_beta/common/main_filters.dart';
 import 'package:flutter/material.dart';
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class EventsView extends StatefulWidget {
-  const EventsView({Key? key}) : super(key: key);
+class HomeView extends StatefulWidget {
+  const HomeView({Key? key}) : super(key: key);
 
   @override
-  _EventsViewState createState() => _EventsViewState();
+  _HomeViewState createState() => _HomeViewState();
 }
 
-class _EventsViewState extends State<EventsView> {
+class _HomeViewState extends State<HomeView> {
   late PageController pageController = PageController(initialPage: 0);
 
   // @override

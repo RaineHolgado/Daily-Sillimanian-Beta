@@ -90,7 +90,7 @@ class RegisterView extends StatelessWidget {
                     AuthElevatedButton(
                       label: "CREATE ACCOUNT",
                       onPressed: () {
-                        context.router.navigate(HomeBuilderRoute());
+                        context.router.navigate(TabNavigationBuilderRoute());
                       },
                     ),
                   ],

@@ -75,7 +75,7 @@ class StartUpView extends StatelessWidget {
                       alignment: Alignment.center,
                       child: GestureDetector(
                         onTap: () {
-                          context.router.push(HomeBuilderRoute());
+                          context.router.push(TabNavigationBuilderRoute());
                         },
                         child: Text(
                           "SIGN IN ANONYMOUSLY",

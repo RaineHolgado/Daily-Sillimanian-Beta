@@ -84,7 +84,7 @@ class LoginView extends StatelessWidget {
                       label: "LOGIN",
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          context.router.navigate(HomeBuilderRoute());
+                          context.router.navigate(TabNavigationBuilderRoute());
                         }
                       },
                     ),
