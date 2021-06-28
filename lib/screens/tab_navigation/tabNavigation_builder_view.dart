@@ -7,43 +7,46 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class TabNavigationBuilderView extends StatelessWidget {
   const TabNavigationBuilderView({Key? key}) : super(key: key);
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: AutoRouter(),
-      bottomNavigationBar: Consumer(
-        builder: (context, watch, _) {
-          int _currentIndex = watch(currentIndexState);
-          return BottomNavigationBar(
-            type: BottomNavigationBarType.fixed,
-            currentIndex: _currentIndex,
-            onTap: (value) {
-              context
-                  .read(currentIndexState.notifier)
-                  .currentIndex(context, value);
-            },
-            items: [
-              for (final tabItem in TabNavigationItem.items)
-                BottomNavigationBarItem(
-                  icon: tabItem.icon,
-                  activeIcon: tabItem.activeIcon,
-                  label: tabItem.title,
-                )
-            ],
-          );
-        },
+    return WillPopScope(
+      onWillPop: () async => await showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text('Log Out'),
+          content: Text("Are you sure you want to log out?"),
+          actions: <Widget>[
+            TextButton(
+              child: Text('CANCEL'),
+              onPressed: () => context.router.pop(false),
+            ),
+            TextButton(
+              child: Text('OK'),
+              onPressed: () => context.router.removeLast(),
+            ),
+          ],
+        ),
+      ),
+      child: AutoTabsScaffold(
+        routes: [
+          for (final tabItem in TabNavigationItem.items) tabItem.page,
+        ],
+        bottomNavigationBuilder: buildBottomNav,
       ),
     );
   }
-}
 
-final currentIndexState =
-    StateNotifierProvider<CurrentIndexState, int>((ref) => CurrentIndexState());
-
-class CurrentIndexState extends StateNotifier<int> {
-  CurrentIndexState() : super(0);
-
-  void currentIndex(BuildContext context, int val) {
-    state = val;
-    AutoRouter.innerRouterOf(context, TabNavigationBuilderRoute.name)
-        ?.navigate(TabNavigationItem.items[val].page);
+  BottomNavigationBar buildBottomNav(
+      BuildContext context, TabsRouter tabsRouter) {
+    return BottomNavigationBar(
+      currentIndex: tabsRouter.activeIndex,
+      onTap: tabsRouter.setActiveIndex,
+      items: [
+        for (final tabItem in TabNavigationItem.items)
+          BottomNavigationBarItem(
+            icon: tabItem.icon,
+            activeIcon: tabItem.activeIcon,
+            label: tabItem.title,
+          )
+      ],
+    );
   }
 }

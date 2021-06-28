@@ -3,10 +3,13 @@ import 'package:daily_sillimanian_beta/screens/landing_screen/landing_page_build
 import 'package:daily_sillimanian_beta/screens/landing_screen/login/login_view.dart';
 import 'package:daily_sillimanian_beta/screens/landing_screen/register/register_view.dart';
 import 'package:daily_sillimanian_beta/screens/landing_screen/start_up/startup_view.dart';
+import 'package:daily_sillimanian_beta/screens/tab_navigation/home/home_detail_view.dart';
 import 'package:daily_sillimanian_beta/screens/tab_navigation/home/home_view.dart';
+import 'package:daily_sillimanian_beta/screens/tab_navigation/inbox/inbox_detail_view.dart';
+import 'package:daily_sillimanian_beta/screens/tab_navigation/organization/organization_detail_view.dart';
 import 'package:daily_sillimanian_beta/screens/tab_navigation/tabNavigation_builder_view.dart';
 import 'package:daily_sillimanian_beta/screens/tab_navigation/inbox/inbox_view.dart';
-import 'package:daily_sillimanian_beta/screens/tab_navigation/organization/orgs_view.dart';
+import 'package:daily_sillimanian_beta/screens/tab_navigation/organization/organization_view.dart';
 
 @AdaptiveAutoRouter(
   replaceInRouteName: 'View,Route',
@@ -16,28 +19,48 @@ import 'package:daily_sillimanian_beta/screens/tab_navigation/organization/orgs_
     AutoRoute(page: LoginView),
     AutoRoute(page: RegisterView),
     AutoRoute(
+      // path: '/', //please remove
       page: TabNavigationBuilderView,
       children: [
-        RedirectRoute(path: '', redirectTo: 'home'),
-        CustomRoute(
+        AutoRoute(
           path: 'home',
-          page: HomeView,
-          transitionsBuilder: TransitionsBuilders.fadeIn,
+          page: EmptyRouterPage,
+          name: "HomeTab",
+          children: [
+            AutoRoute(path: '', page: HomeView),
+            AutoRoute(
+              path: 'home-detail',
+              page: HomeDetailView,
+            ),
+          ],
         ),
-        CustomRoute(
+        AutoRoute(
           path: 'organization',
-          page: OrganizationView,
-          transitionsBuilder: TransitionsBuilders.fadeIn,
+          name: "OrganizationTab",
+          page: EmptyRouterPage,
+          children: [
+            AutoRoute(path: '', page: OrganizationView),
+            AutoRoute(
+              path: 'organization-detail',
+              page: OrganizationDetailView,
+            ),
+          ],
         ),
-        CustomRoute(
+        AutoRoute(
           path: 'inbox',
-          page: InboxView,
-          transitionsBuilder: TransitionsBuilders.fadeIn,
+          name: "InboxTab",
+          page: EmptyRouterPage,
+          children: [
+            AutoRoute(path: '', page: InboxView),
+            AutoRoute(
+              path: 'inbox-detail',
+              page: InboxDetailView,
+            ),
+          ],
         ),
-        // AutoRoute(path: 'inbox', page: InboxView),
+        RedirectRoute(path: '', redirectTo: 'home'),
       ],
     ),
-    // AutoRoute(page: DetailView),
     RedirectRoute(path: '*', redirectTo: '/'),
   ],
 )

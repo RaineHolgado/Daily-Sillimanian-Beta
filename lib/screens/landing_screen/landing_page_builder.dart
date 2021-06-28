@@ -2,6 +2,7 @@ import 'package:daily_sillimanian_beta/helpers/constants.dart';
 import 'package:daily_sillimanian_beta/screens/landing_screen/login/login_view.dart';
 import 'package:daily_sillimanian_beta/screens/landing_screen/register/register_view.dart';
 import 'package:daily_sillimanian_beta/screens/landing_screen/start_up/startup_view.dart';
+import 'package:daily_sillimanian_beta/screens/tab_navigation/tabNavigation_builder_view.dart';
 import 'package:flutter/material.dart';
 
 class LandingPageBuilder extends StatelessWidget {
@@ -9,7 +10,7 @@ class LandingPageBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // return RegisterView();
+    // return TabNavigationBuilderView();
     return FutureBuilder(
       // Initialize FlutterFire:
       future: initialization,
