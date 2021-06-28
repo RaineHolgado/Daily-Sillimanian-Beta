@@ -5,8 +5,10 @@ class HomeDetailView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text("Home Detail Screen"),
+    return Scaffold(
+      body: Center(
+        child: Text("Home Detail Screen"),
+      ),
     );
   }
 }
