@@ -1,6 +1,8 @@
 import 'package:daily_sillimanian_beta/screens/tab_navigation/home/dummy_events.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:daily_sillimanian_beta/app/router.gr.dart';
 
 class UpcomingView extends StatelessWidget {
   const UpcomingView({Key? key}) : super(key: key);
@@ -11,7 +13,9 @@ class UpcomingView extends StatelessWidget {
       children: [
         for (var events in DummyEvents.items) ...[
           EventCard(
-            onTapCard: () {},
+            onTapCard: () {
+              context.router.push(HomeDetailRoute());
+            },
             posterImage: events.posterImage,
             orgLogo: events.orgLogo,
             organization: events.organization,
