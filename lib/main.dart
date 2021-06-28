@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:daily_sillimanian_beta/helpers/dsb_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -15,15 +16,11 @@ class DailySillimanBetaApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Daily Sillimanian Beta',
       theme: AppTheme(context),
-      routerDelegate: _appRouter.delegate(),
+      routerDelegate: AutoRouterDelegate(
+        _appRouter,
+        navigatorObservers: () => [AutoRouteObserver()],
+      ),
       routeInformationParser: _appRouter.defaultRouteParser(),
     );
-    // return MaterialApp(
-    //   debugShowCheckedModeBanner: false,
-    //   title: 'Daily Sillimanian Beta',
-    //   theme: AppTheme(context),
-    //   home: StartUpPageController(),
-    //   // home: SignUpview(),
-    // );
   }
 }
