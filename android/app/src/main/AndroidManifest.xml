@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.daily_sillimanian_beta">
    <application
-        android:label="daily_sillimanian_beta"
-        android:icon="@mipmap/ic_launcher">
+        android:label="Daily Silliman"
+        android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
