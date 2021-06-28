@@ -11,7 +11,7 @@ void main() {
       // statusBarColor: Color(0xFF870510),
       // systemNavigationBarColor: Color(0xFF870510),
       statusBarColor: Colors.black,
-      systemNavigationBarColor: Colors.white,
+      systemNavigationBarColor: Colors.black,
     ),
   );
   runApp(ProviderScope(child: DailySillimanBetaApp()));
