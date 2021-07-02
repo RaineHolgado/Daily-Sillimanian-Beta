@@ -1,3 +1,4 @@
+import 'package:daily_sillimanian_beta/helpers/constants.dart';
 import 'package:flutter/material.dart';
 
 class InputTextFormField extends StatefulWidget {
@@ -55,10 +56,7 @@ class _InputTextFormFieldState extends State<InputTextFormField> {
         children: [
           Text(
             widget.label,
-            style: TextStyle(
-              fontSize: 13,
-              fontWeight: FontWeight.w400,
-            ),
+            style: Theme.of(context).primaryTextTheme.bodyText1,
           ),
           SizedBox(height: 8),
           Container(
@@ -82,26 +80,17 @@ class _InputTextFormFieldState extends State<InputTextFormField> {
                               isPassword
                                   ? Icons.visibility_off
                                   : Icons.visibility,
-                              color: Colors.black,
+                              color: colorPalleteCaption,
                               size: 23),
                         )
                       : null,
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black),
-                    borderRadius: BorderRadius.circular(5.0),
-                  ),
+                  focusedBorder: OutlineInputBorder(),
                   // enabledBorder: OutlineInputBorder(
                   //   borderSide: BorderSide(color: Colors.pink),
                   //   borderRadius: BorderRadius.circular(5.0),
                   // ),
-                  focusedErrorBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.red),
-                    borderRadius: BorderRadius.circular(5.0),
-                  ),
-                  errorBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.red),
-                    borderRadius: BorderRadius.circular(5.0),
-                  ),
+                  focusedErrorBorder: OutlineInputBorder(),
+                  errorBorder: OutlineInputBorder(),
                   hintText: widget.hintText,
                   contentPadding: EdgeInsets.only(
                       left: 12, right: 12, top: 15, bottom: 15)),

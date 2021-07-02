@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:daily_sillimanian_beta/helpers/constants.dart';
 import 'package:daily_sillimanian_beta/screens/tab_navigation/tabNavigationItem.dart';
 import 'package:flutter/material.dart';
 
@@ -9,15 +10,36 @@ class TabNavigationBuilderView extends StatelessWidget {
       onWillPop: () async => await showDialog(
         context: context,
         builder: (context) => AlertDialog(
-          title: Text('Log Out'),
-          content: Text("Are you sure you want to log out?"),
+          title: Text(
+            'Log Out',
+            style: Theme.of(context).primaryTextTheme.subtitle2,
+          ),
+          content: Text(
+            "Are you sure you want to log out?",
+            style: Theme.of(context)
+                .primaryTextTheme
+                .bodyText1!
+                .copyWith(color: colorPalleteCaption),
+          ),
           actions: <Widget>[
             TextButton(
-              child: Text('CANCEL'),
+              child: Text(
+                'CANCEL',
+                style: Theme.of(context)
+                    .primaryTextTheme
+                    .overline!
+                    .copyWith(color: colorPalleteSecondary),
+              ),
               onPressed: () => context.router.pop(false),
             ),
             TextButton(
-              child: Text('OK'),
+              child: Text(
+                'OK',
+                style: Theme.of(context)
+                    .primaryTextTheme
+                    .overline!
+                    .copyWith(color: colorPalletePrimary),
+              ),
               onPressed: () => context.router.removeLast(),
             ),
           ],

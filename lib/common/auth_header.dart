@@ -1,4 +1,4 @@
-
+import 'package:daily_sillimanian_beta/helpers/constants.dart';
 import 'package:flutter/material.dart';
 
 class AuthHeader extends StatelessWidget {
@@ -20,27 +20,20 @@ class AuthHeader extends StatelessWidget {
       child: RichText(
         text: TextSpan(
           text: text,
-          style: TextStyle(
-            color: Color(0xFFBB1017),
-            fontSize: 25,
-            fontWeight: FontWeight.w400,
-          ),
+          style: Theme.of(context)
+              .primaryTextTheme
+              .headline6!
+              .copyWith(color: colorPalleteSecondary),
           children: <TextSpan>[
             TextSpan(
               text: childrenText1,
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 25,
-                fontWeight: FontWeight.w400,
-              ),
+              style: Theme.of(context).primaryTextTheme.headline6!.copyWith(),
             ),
             TextSpan(
               text: childrenText2,
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 25,
-                fontWeight: FontWeight.w500,
-              ),
+              style: Theme.of(context).primaryTextTheme.headline6!.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
             ),
           ],
         ),

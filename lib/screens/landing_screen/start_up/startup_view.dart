@@ -1,6 +1,8 @@
 import 'package:daily_sillimanian_beta/common/app_logo.dart';
 import 'package:daily_sillimanian_beta/common/auth_elevatedbutton.dart';
 import 'package:daily_sillimanian_beta/common/auth_outlinedbutton.dart';
+import 'package:daily_sillimanian_beta/helpers/constants.dart';
+import 'package:daily_sillimanian_beta/helpers/dsb_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:daily_sillimanian_beta/app/router.gr.dart';
@@ -21,13 +23,8 @@ class StartUpView extends StatelessWidget {
               child: Column(
                 children: [
                   SizedBox(height: 80),
-                  Text(
-                    "WELCOME TO",
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
+                  Text("WELCOME TO",
+                      style: Theme.of(context).primaryTextTheme.bodyText1),
                   SizedBox(height: 25),
                   Container(
                     height: 320,
@@ -53,18 +50,23 @@ class StartUpView extends StatelessWidget {
                       onPressed: () {
                         context.router.push(LoginRoute());
                       },
+                      labeltStyle: Theme.of(context)
+                          .primaryTextTheme
+                          .bodyText1!
+                          .copyWith(color: colorPalleteBg),
                     ),
                     SizedBox(height: 15),
                     AuthElevatedButton(
                       label: "REGISTER",
                       style: ElevatedButtonTheme.of(context).style!.copyWith(
                             backgroundColor:
-                                MaterialStateProperty.all(Color(0xFFE6E6E6)),
+                                MaterialStateProperty.all(Color(0xFFEFF0F1)),
+                            //0xFFE6E6E6
                           ),
                       labeltStyle: Theme.of(context)
                           .primaryTextTheme
                           .button!
-                          .copyWith(color: Colors.black),
+                          .copyWith(color: colorScheme.primary),
                       onPressed: () {
                         context.router.push(RegisterRoute());
                       },
@@ -77,15 +79,8 @@ class StartUpView extends StatelessWidget {
                         onTap: () {
                           context.router.push(TabNavigationBuilderRoute());
                         },
-                        child: Text(
-                          "SIGN IN ANONYMOUSLY",
-                          style: TextStyle(
-                            letterSpacing: 1,
-                            fontSize: 13,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.black,
-                          ),
-                        ),
+                        child: Text("LOGIN ANONYMOUSLY",
+                            style: Theme.of(context).primaryTextTheme.overline),
                       ),
                     ),
                     SizedBox(height: 80),

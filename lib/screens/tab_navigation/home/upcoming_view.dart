@@ -1,3 +1,4 @@
+import 'package:daily_sillimanian_beta/helpers/constants.dart';
 import 'package:daily_sillimanian_beta/screens/tab_navigation/home/dummy_events.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
@@ -54,7 +55,7 @@ class EventCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(
-          horizontal: MediaQuery.of(context).size.width * 0.07),
+          vertical: 5, horizontal: MediaQuery.of(context).size.width * 0.07),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -96,10 +97,13 @@ class EventCard extends StatelessWidget {
                         SizedBox(width: 6),
                         Text(
                           organization,
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 15,
-                              fontWeight: FontWeight.w700),
+                          style: Theme.of(context)
+                              .primaryTextTheme
+                              .overline!
+                              .copyWith(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
                         )
                       ],
                     ),
@@ -116,35 +120,34 @@ class EventCard extends StatelessWidget {
               Expanded(
                 child: Text(
                   title,
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                  ),
+                  style: Theme.of(context).primaryTextTheme.bodyText2,
                 ),
               ),
               GestureDetector(
                 onTap: onTapNotification,
                 child: Icon(
                   Ionicons.notifications,
-                  color: Color(0xFF959595),
+                  size: 23,
+                  color: colorPalleteCaption,
                 ),
               ),
             ],
           ),
+          SizedBox(height: 5),
           Row(
             children: [
               Icon(
-                Ionicons.calendar_clear_outline,
-                color: Color(0xFFBB1017),
+                Ionicons.calendar_clear_sharp,
+                size: 18,
+                color: colorPalleteSecondary,
               ),
               SizedBox(width: 5),
               Text(
                 date,
-                style: TextStyle(
-                  fontSize: 13,
-                  fontWeight: FontWeight.w400,
-                  color: Color(0xFFBB1017),
-                ),
+                style: Theme.of(context)
+                    .primaryTextTheme
+                    .overline!
+                    .copyWith(color: colorPalleteSecondary),
               ),
             ],
           )

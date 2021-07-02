@@ -1,3 +1,4 @@
+import 'package:daily_sillimanian_beta/helpers/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -71,12 +72,20 @@ class _FilterButton extends StatelessWidget {
       child: isSelected
           ? ElevatedButton(
               onPressed: onPressed,
-              child: Text(title, style: TextStyle(color: Colors.white)),
+              child: Text(title,
+                  style: Theme.of(context)
+                      .primaryTextTheme
+                      .bodyText1!
+                      .copyWith(color: colorPalleteBg)),
               style: TextButton.styleFrom(
                   shape: RoundedRectangleBorder(borderRadius: borderRadius)),
             )
           : OutlinedButton(
-              child: Text(title),
+              child: Text(title,
+                  style: Theme.of(context)
+                      .primaryTextTheme
+                      .bodyText1!
+                      .copyWith(color: colorPalleteSecondary)),
               onPressed: onPressed,
               style: TextButton.styleFrom(
                   shape: RoundedRectangleBorder(borderRadius: borderRadius)),

@@ -24,7 +24,7 @@ class DailySillimanBetaApp extends StatelessWidget {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: 'Daily Sillimanian Beta',
-      theme: AppTheme(context),
+      theme: CustomTheme(context).lightTheme,
       routerDelegate: AutoRouterDelegate(
         _appRouter,
         navigatorObservers: () => [AutoRouteObserver()],

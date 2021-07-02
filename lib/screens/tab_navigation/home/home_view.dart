@@ -1,4 +1,5 @@
 import 'package:daily_sillimanian_beta/common/main_filters.dart';
+import 'package:daily_sillimanian_beta/helpers/constants.dart';
 import 'package:daily_sillimanian_beta/screens/tab_navigation/home/today_view.dart';
 import 'package:daily_sillimanian_beta/screens/tab_navigation/home/upcoming_view.dart';
 import 'package:flutter/material.dart';
@@ -24,24 +25,27 @@ class HomeView extends StatelessWidget {
               backgroundColor: Color(0xFF0AC18A),
               child: Text(
                 "T",
-                style: TextStyle(color: Colors.white),
+                style: Theme.of(context)
+                    .primaryTextTheme
+                    .bodyText2!
+                    .copyWith(color: colorPalleteBg),
               ),
             ),
           ],
         ),
         title: Text(
           "Home",
-          style: Theme.of(context).appBarTheme.titleTextStyle!.copyWith(
-                fontSize: 20.0,
-                fontWeight: FontWeight.w700,
-              ),
+          style: Theme.of(context).appBarTheme.titleTextStyle,
         ),
         actions: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: IconButton(
               onPressed: () {},
-              icon: Icon(Ionicons.search_outline),
+              icon: Icon(
+                Ionicons.search_outline,
+                color: colorPalletePrimary,
+              ),
             ),
           )
         ],
