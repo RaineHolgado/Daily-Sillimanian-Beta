@@ -19,20 +19,20 @@ class TabNavigationItem {
   static List<TabNavigationItem> get items => [
         TabNavigationItem(
           page: HomeTab(),
-          icon: Icon(Icons.home, color: Color(0xFF555555)),
-          activeIcon: Icon(Icons.home, color: Color(0xFFBB1017)),
+          icon: Icon(Icons.home_sharp, color: Color(0xFF555555)),
+          activeIcon: Icon(Icons.home_sharp, color: Color(0xFFBB1017)),
           title: "Home",
         ),
         TabNavigationItem(
           page: OrganizationTab(),
-          icon: Icon(Icons.people, color: Color(0xFF555555)),
-          activeIcon: Icon(Icons.people, color: Color(0xFFBB1017)),
+          icon: Icon(Icons.people_sharp, color: Color(0xFF555555)),
+          activeIcon: Icon(Icons.people_sharp, color: Color(0xFFBB1017)),
           title: "Organization",
         ),
         TabNavigationItem(
           page: InboxTab(),
-          icon: Icon(Ionicons.albums_outline, color: Color(0xFF555555)),
-          activeIcon: Icon(Ionicons.albums_outline, color: Color(0xFFBB1017)),
+          icon: Icon(Ionicons.albums_sharp, color: Color(0xFF555555)),
+          activeIcon: Icon(Ionicons.albums_sharp, color: Color(0xFFBB1017)),
           title: "Inbox",
         ),
       ];

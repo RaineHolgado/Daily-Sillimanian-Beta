@@ -1,3 +1,4 @@
+import 'package:daily_sillimanian_beta/helpers/constants.dart';
 import 'package:flutter/material.dart';
 
 class AuthCheckBox extends StatefulWidget {
@@ -26,7 +27,7 @@ class _AuthCheckBoxState extends State<AuthCheckBox> {
           Container(
             child: Checkbox(
               value: _value,
-              activeColor: Color(0xFFBB1017),
+              activeColor: colorPalleteSecondary,
               onChanged: (bool? val) {
                 setState(() {
                   _value = val!;
@@ -40,19 +41,17 @@ class _AuthCheckBoxState extends State<AuthCheckBox> {
             child: RichText(
               text: TextSpan(
                 text: 'Creating account means agreeing to the ',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 13,
-                  fontWeight: FontWeight.w400,
-                ),
+                style: Theme.of(context)
+                    .primaryTextTheme
+                    .overline!
+                    .copyWith(color: colorPalleteCaption),
                 children: <TextSpan>[
                   TextSpan(
                     text: 'terms and conditions',
-                    style: TextStyle(
-                      color: Color(0xFFBB1017),
-                      fontSize: 13,
-                      fontWeight: FontWeight.w400,
-                    ),
+                    style: Theme.of(context)
+                        .primaryTextTheme
+                        .overline!
+                        .copyWith(color: colorPalleteSecondary),
                   ),
                 ],
               ),

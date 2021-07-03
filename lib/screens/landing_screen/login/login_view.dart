@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:daily_sillimanian_beta/common/auth_header.dart';
+import 'package:daily_sillimanian_beta/helpers/constants.dart';
 import 'package:flutter/material.dart';
 
 import 'package:daily_sillimanian_beta/app/router.gr.dart';
@@ -71,11 +72,10 @@ class LoginView extends StatelessWidget {
                         child: Text(
                           "forgot password",
                           style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400,
-                            // color: Color(0xFF870510),
-                            color: Colors.blueAccent
-                          ),
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400,
+                              // color: Color(0xFF870510),
+                              color: Colors.blueAccent),
                         ),
                       ),
                     ),
@@ -87,6 +87,10 @@ class LoginView extends StatelessWidget {
                           context.router.navigate(TabNavigationBuilderRoute());
                         }
                       },
+                      labeltStyle: Theme.of(context)
+                          .primaryTextTheme
+                          .bodyText1!
+                          .copyWith(color: colorPalleteBg),
                     ),
                   ],
                 ),

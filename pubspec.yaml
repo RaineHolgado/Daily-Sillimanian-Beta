@@ -58,7 +58,7 @@ flutter_native_splash:
 flutter_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/images/red-logo.png"
+  image_path: "assets/images/app-launcher.png"
   # Steps
   # flutter pub get
   # flutter pub run flutter_launcher_icons:main

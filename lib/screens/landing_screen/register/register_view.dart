@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:daily_sillimanian_beta/common/auth_checkbox.dart';
+import 'package:daily_sillimanian_beta/helpers/constants.dart';
 import 'package:flutter/material.dart';
 
 import 'package:daily_sillimanian_beta/app/router.gr.dart';
@@ -82,7 +83,7 @@ class RegisterView extends StatelessWidget {
                     SizedBox(height: 12),
                     AuthCheckBox(
                       value: _agreed,
-                      onChanged: (val){
+                      onChanged: (val) {
                         print("CheckBox val: $val");
                       },
                     ),
@@ -92,6 +93,10 @@ class RegisterView extends StatelessWidget {
                       onPressed: () {
                         context.router.navigate(TabNavigationBuilderRoute());
                       },
+                      labeltStyle: Theme.of(context)
+                          .primaryTextTheme
+                          .bodyText1!
+                          .copyWith(color: colorPalleteBg),
                     ),
                   ],
                 ),
@@ -103,4 +108,3 @@ class RegisterView extends StatelessWidget {
     );
   }
 }
-
