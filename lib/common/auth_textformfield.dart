@@ -84,13 +84,16 @@ class _InputTextFormFieldState extends State<InputTextFormField> {
                               size: 23),
                         )
                       : null,
-                  focusedBorder: OutlineInputBorder(),
+                  focusedBorder:
+                      Theme.of(context).inputDecorationTheme.focusedBorder,
                   // enabledBorder: OutlineInputBorder(
                   //   borderSide: BorderSide(color: Colors.pink),
                   //   borderRadius: BorderRadius.circular(5.0),
                   // ),
-                  focusedErrorBorder: OutlineInputBorder(),
-                  errorBorder: OutlineInputBorder(),
+                  focusedErrorBorder:
+                      Theme.of(context).inputDecorationTheme.focusedErrorBorder,
+                  errorBorder:
+                      Theme.of(context).inputDecorationTheme.errorBorder,
                   hintText: widget.hintText,
                   contentPadding: EdgeInsets.only(
                       left: 12, right: 12, top: 15, bottom: 15)),

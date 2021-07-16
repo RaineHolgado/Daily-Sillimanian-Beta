@@ -1,27 +1,24 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:daily_sillimanian_beta/common/auth_header.dart';
 import 'package:daily_sillimanian_beta/helpers/constants.dart';
+import 'package:daily_sillimanian_beta/screens/landing_screen/user_state.dart';
+import 'package:daily_sillimanian_beta/services/user_service.dart';
 import 'package:flutter/material.dart';
-
-import 'package:daily_sillimanian_beta/app/router.gr.dart';
-import 'package:daily_sillimanian_beta/common/app_logo.dart';
 import 'package:daily_sillimanian_beta/common/auth_elevatedbutton.dart';
 import 'package:daily_sillimanian_beta/common/auth_textformfield.dart';
-import 'package:daily_sillimanian_beta/common/auth_underlinebutton.dart';
 import 'package:daily_sillimanian_beta/common/dsb_scaffold.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class LoginView extends StatelessWidget {
-  final TextEditingController _usernameController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-  final _formKey = GlobalKey<FormState>();
-
+class LoginView extends ConsumerWidget {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final userAuthState = ref.watch(userStateProvider);
+
     return DsbScaffold(
       appBarTitle: "LOGIN",
       body: SafeArea(
         child: Container(
-          padding: EdgeInsetsDirectional.only(top: 30),
+          padding: const EdgeInsetsDirectional.only(top: 30),
           width: double.infinity,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -34,14 +31,14 @@ class LoginView extends StatelessWidget {
               ),
               SizedBox(height: 55),
               Form(
-                key: _formKey,
+                key: userAuthState.formKey,
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     InputTextFormField(
                       label: "Email",
-                      controller: _usernameController,
+                      controller: userAuthState.emailController,
                       hintText: "Email",
                       onFieldSubmitted: (_) {},
                       validator: (val) {
@@ -53,7 +50,7 @@ class LoginView extends StatelessWidget {
                     SizedBox(height: 15),
                     InputTextFormField(
                       label: "Password",
-                      controller: _passwordController,
+                      controller: userAuthState.passwordController,
                       hintText: "Password",
                       password: true,
                       onFieldSubmitted: (_) {},
@@ -80,18 +77,26 @@ class LoginView extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 40),
-                    AuthElevatedButton(
-                      label: "LOGIN",
-                      onPressed: () {
-                        if (_formKey.currentState!.validate()) {
-                          context.router.navigate(TabNavigationBuilderRoute());
-                        }
-                      },
-                      labeltStyle: Theme.of(context)
-                          .primaryTextTheme
-                          .bodyText1!
-                          .copyWith(color: colorPalleteBg),
-                    ),
+                    Consumer(builder: (context, ref, _) {
+                      final userState = ref.watch(userServiceProvider);
+                      return userState.maybeWhen(
+                        data: (_) {
+                          return AuthElevatedButton(
+                            label: "LOGIN",
+                            onPressed: () {
+                              userAuthState.submitFormLogin(context);
+                            },
+                            labeltStyle: Theme.of(context)
+                                .primaryTextTheme
+                                .bodyText1!
+                                .copyWith(color: colorPalleteBg),
+                          );
+                        },
+                        orElse: () => Center(
+                          child: CircularProgressIndicator(),
+                        ),
+                      );
+                    }),
                   ],
                 ),
               ),

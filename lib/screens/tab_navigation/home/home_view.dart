@@ -51,8 +51,8 @@ class HomeView extends StatelessWidget {
         ],
       ),
       body: Consumer(
-        builder: (context, watch, _) {
-          EventsProvider _events = watch(eventsProvider);
+        builder: (context, ref, _) {
+          EventsProvider _events = ref.watch(eventsProvider);
           return Container(
             child: Column(
               children: [

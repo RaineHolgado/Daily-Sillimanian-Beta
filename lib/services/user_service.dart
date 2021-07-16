@@ -1,39 +1,136 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:daily_sillimanian_beta/app/router.gr.dart';
 import 'package:daily_sillimanian_beta/models/user_model.dart';
-import 'package:daily_sillimanian_beta/services/firebaseFirestore_service.dart';
+import 'package:daily_sillimanian_beta/repository/user_repository.dart';
+import 'package:daily_sillimanian_beta/screens/landing_screen/user_state.dart';
+import 'package:daily_sillimanian_beta/services/authentication_service.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final userServiceProvider = Provider((ref) => UserService(ref.read));
+final userExceptionProvider = StateProvider<Object?>((ref) {
+  return null;
+});
 
-class UserService {
-  UserService(this.read);
+final userServiceProvider =
+    StateNotifierProvider<UserService, AsyncValue<UserModel?>>(
+        (ref) => UserService(ref));
 
-  final Reader read;
+class UserService extends StateNotifier<AsyncValue<UserModel?>> {
+  UserService(this.ref) : super(AsyncValue.data(null));
 
-  UserModel? _userModel;
-  UserModel? get userModel => _userModel;
+  final ProviderRefBase ref;
 
-  Future createUser({
-    required String uid,
+  Future<void> register({
     required String email,
-    required String name,
+    required String password,
+    required BuildContext context,
   }) async {
     try {
-      await read(firebaseFirestoreServiceProvider).userColRef.doc(uid).set({});
+      state = AsyncValue.loading();
+      final uid = await ref.read(authenticationServiceProvider).signUpUser(
+            email: email,
+            password: password,
+          );
+
+      final user = await ref.read(userRepositoryProvider).create(
+            userModel: UserModel(
+              id: uid,
+              name: email[0].toUpperCase(),
+              email: email,
+            ),
+          );
+      state = AsyncValue.data(user);
+      context.router.navigate(TabNavigationBuilderRoute());
+      ref.read(userStateProvider).clear();
     } catch (e) {
-      throw (e);
+      // Create custom dialog
+      showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: Text("Opss"),
+              content: Text(e.toString()),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    context.router.pop();
+                  },
+                  child: Text("OK"),
+                ),
+              ],
+            );
+          });
+      // _handleException(e);
+      state = AsyncValue.data(null);
+      // state = AsyncValue.error(e, st);
     }
   }
 
-  Future<UserModel> getUser({required String uid}) async {
+  Future<void> login({
+    required BuildContext context,
+    required String email,
+    required String password,
+  }) async {
     try {
-      return await read(firebaseFirestoreServiceProvider)
-          .userColRef
-          .doc(uid)
-          .get()
-          .then((value) => UserModel.fromMap(value.data()));
+      state = AsyncValue.loading();
+      final uid = await ref.read(authenticationServiceProvider).signInUser(
+            email: email,
+            password: password,
+          );
+      final user = await ref.read(userRepositoryProvider).get(uid: uid);
+
+      state = AsyncValue.data(user);
+      context.router.navigate(TabNavigationBuilderRoute());
+      ref.read(userStateProvider).clear();
     } catch (e) {
-      throw (e);
+      // Create custom dialog
+      showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: Text("Opss"),
+              content: Text(e.toString()),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    context.router.pop();
+                  },
+                  child: Text("OK"),
+                ),
+              ],
+            );
+          });
+      // _handleException(e);
     }
+  }
+
+  Future<void> logOut() async {
+    await ref.read(authenticationServiceProvider).signOutUser();
+    state = AsyncValue.data(null);
+  }
+
+  Future<void> testGetUser({required String uid}) async {
+    try {
+      await ref.read(userRepositoryProvider).get(uid: uid);
+    } catch (e) {
+      _handleException(e);
+    }
+  }
+
+  void _handleException(Object e) {
+    ref.read(userExceptionProvider).state = "$e";
+  }
+}
+
+class UserException implements Exception {
+  const UserException(this.error);
+
+  final String error;
+
+  @override
+  String toString() {
+    return '''
+    User Error: $error
+    ''';
   }
 }

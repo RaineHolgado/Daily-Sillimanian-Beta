@@ -27,7 +27,7 @@ class AuthHeader extends StatelessWidget {
           children: <TextSpan>[
             TextSpan(
               text: childrenText1,
-              style: Theme.of(context).primaryTextTheme.headline6!.copyWith(),
+              style: Theme.of(context).primaryTextTheme.headline6,
             ),
             TextSpan(
               text: childrenText2,
