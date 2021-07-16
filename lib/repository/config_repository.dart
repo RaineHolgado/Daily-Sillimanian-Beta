@@ -7,6 +7,7 @@ final configRepository =
     Provider<ConfigRepository>((ref) => IConfigRepository(ref));
 
 abstract class ConfigRepository {
+  Future<void> initSharedPref();
   Future<void> saveUser({required String email, required String password});
   Future<void> removeUser();
   Future<LocalUser?> getUser();
@@ -15,12 +16,17 @@ abstract class ConfigRepository {
 class IConfigRepository implements ConfigRepository {
   final ProviderRefBase ref;
   IConfigRepository(this.ref);
-  Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+  late SharedPreferences _prefs;
+
+  @override
+  Future<void> initSharedPref() async {
+    _prefs = await SharedPreferences.getInstance();
+  }
 
   @override
   Future<void> removeUser() async {
-    final SharedPreferences prefs = await _prefs;
-    await prefs.clear();
+    await _prefs.remove("email");
+    await _prefs.remove("password");
   }
 
   @override
@@ -28,16 +34,14 @@ class IConfigRepository implements ConfigRepository {
     required String email,
     required String password,
   }) async {
-    final SharedPreferences prefs = await _prefs;
-    prefs.setString("email", email);
-    prefs.setString("password", password);
+    _prefs.setString("email", email);
+    _prefs.setString("password", password);
   }
 
   @override
   Future<LocalUser?> getUser() async {
-    final SharedPreferences prefs = await _prefs;
-    String? _email = await prefs.getString("email") ?? null;
-    String? _password = await prefs.getString("password") ?? null;
+    String? _email = await _prefs.getString("email") ?? null;
+    String? _password = await _prefs.getString("password") ?? null;
 
     if (_email == null && _password == null) return null;
     return LocalUser(email: _email, password: _password);

@@ -209,14 +209,12 @@ const TextTheme primaryFont = TextTheme(
   //Button Text
   button: TextStyle(
     // fontFamily: 'Montserrat',
-    // letterSpacing: 1,
-    fontSize: 14,
-    // fontWeight: FontWeight.normal,
+    letterSpacing: 1,
+    fontSize: 15,
+    fontWeight: FontWeight.normal,
     color: colorPalletePrimary,
   ),
 );
-
-
 
 //import 'package:daily_sillimanian_beta/helpers/constants.dart';
 // import 'package:flutter/material.dart';

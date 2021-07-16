@@ -1,5 +1,8 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:daily_sillimanian_beta/app/router.gr.dart';
 import 'package:daily_sillimanian_beta/services/user_service.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // final userStateProvider = StateProvider<UserState>((ref) {
@@ -42,17 +45,33 @@ class UserState extends ChangeNotifier {
     if (formKey.currentState!.validate() &&
         passwordController.text == retypePasswordController.text &&
         isCheck) {
-      ref.read(userServiceProvider.notifier).register(
-            email: emailController.text.trim(),
-            password: passwordController.text.trim(),
+      try {
+        ref.read(userServiceProvider.notifier).register(
+              email: emailController.text.trim(),
+              password: passwordController.text.trim(),
+            );
+        context.router.push(TabNavigationBuilderRoute());
+        clear();
+      } catch (e) {
+        showDialog(
             context: context,
-          );
-      // emailController.clear();
-      // passwordController.clear();
-      // retypePasswordController.clear();
+            builder: (context) {
+              return AlertDialog(
+                title: Text("Opss"),
+                content: Text(e.toString()),
+                actions: [
+                  TextButton(
+                    onPressed: () {
+                      context.router.pop();
+                    },
+                    child: Text("OK"),
+                  ),
+                ],
+              );
+            });
+      }
     } else {
       if (!isCheck) {
-        print("isCheck .....");
         errorAgreed = true;
       }
     }
@@ -61,17 +80,33 @@ class UserState extends ChangeNotifier {
 
   void submitFormLogin(BuildContext context) {
     if (formKey.currentState!.validate()) {
-      ref.read(userServiceProvider.notifier).login(
-            email: emailController.text.trim(),
-            password: passwordController.text.trim(),
+      try {
+        ref.read(userServiceProvider.notifier).login(
+              email: emailController.text.trim(),
+              password: passwordController.text.trim(),
+            );
+        context.router.push(TabNavigationBuilderRoute());
+        clear();
+      } catch (e) {
+        showDialog(
             context: context,
-          );
-      // emailController.clear();
-      // passwordController.clear();
-      // retypePasswordController.clear();
+            builder: (context) {
+              return AlertDialog(
+                title: Text("Opss"),
+                content: Text(e.toString()),
+                actions: [
+                  TextButton(
+                    onPressed: () {
+                      context.router.pop();
+                    },
+                    child: Text("OK"),
+                  ),
+                ],
+              );
+            });
+      }
     } else {
       if (!isCheck) {
-        print("isCheck .....");
         errorAgreed = true;
       }
     }

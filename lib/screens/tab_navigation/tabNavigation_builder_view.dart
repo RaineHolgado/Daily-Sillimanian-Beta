@@ -1,11 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:daily_sillimanian_beta/helpers/constants.dart';
 import 'package:daily_sillimanian_beta/screens/tab_navigation/tabNavigationItem.dart';
+import 'package:daily_sillimanian_beta/services/user_service.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class TabNavigationBuilderView extends StatelessWidget {
+class TabNavigationBuilderView extends ConsumerWidget {
   const TabNavigationBuilderView({Key? key}) : super(key: key);
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return WillPopScope(
       onWillPop: () async => await showDialog(
         context: context,
@@ -40,7 +42,10 @@ class TabNavigationBuilderView extends StatelessWidget {
                     .overline!
                     .copyWith(color: colorPalletePrimary),
               ),
-              onPressed: () => context.router.removeLast(),
+              onPressed: () async {
+                await ref.read(userServiceProvider.notifier).logOut();
+                context.router.removeLast();
+              },
             ),
           ],
         ),

@@ -7,11 +7,11 @@
 import 'package:auto_route/auto_route.dart' as _i1;
 import 'package:daily_sillimanian_beta/screens/landing_screen/landing_page_builder.dart'
     as _i3;
-import 'package:daily_sillimanian_beta/screens/landing_screen/login/login_view.dart'
+import 'package:daily_sillimanian_beta/screens/landing_screen/login_view.dart'
     as _i5;
-import 'package:daily_sillimanian_beta/screens/landing_screen/register/register_view.dart'
+import 'package:daily_sillimanian_beta/screens/landing_screen/register_view.dart'
     as _i6;
-import 'package:daily_sillimanian_beta/screens/landing_screen/start_up/startup_view.dart'
+import 'package:daily_sillimanian_beta/screens/landing_screen/startup_view.dart'
     as _i4;
 import 'package:daily_sillimanian_beta/screens/tab_navigation/home/home_detail_view.dart'
     as _i9;
