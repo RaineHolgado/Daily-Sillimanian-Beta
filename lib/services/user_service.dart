@@ -1,10 +1,6 @@
-import 'package:auto_route/auto_route.dart';
-import 'package:daily_sillimanian_beta/app/router.gr.dart';
 import 'package:daily_sillimanian_beta/models/user_model.dart';
 import 'package:daily_sillimanian_beta/repository/user_repository.dart';
-import 'package:daily_sillimanian_beta/screens/landing_screen/user_state.dart';
 import 'package:daily_sillimanian_beta/services/authentication_service.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final userExceptionProvider = StateProvider<Object?>((ref) {
@@ -23,7 +19,6 @@ class UserService extends StateNotifier<AsyncValue<UserModel?>> {
   Future<void> register({
     required String email,
     required String password,
-    required BuildContext context,
   }) async {
     try {
       state = AsyncValue.loading();
@@ -40,34 +35,14 @@ class UserService extends StateNotifier<AsyncValue<UserModel?>> {
             ),
           );
       state = AsyncValue.data(user);
-      context.router.navigate(TabNavigationBuilderRoute());
-      ref.read(userStateProvider).clear();
     } catch (e) {
-      // Create custom dialog
-      showDialog(
-          context: context,
-          builder: (context) {
-            return AlertDialog(
-              title: Text("Opss"),
-              content: Text(e.toString()),
-              actions: [
-                TextButton(
-                  onPressed: () {
-                    context.router.pop();
-                  },
-                  child: Text("OK"),
-                ),
-              ],
-            );
-          });
-      // _handleException(e);
       state = AsyncValue.data(null);
+      throw e;
       // state = AsyncValue.error(e, st);
     }
   }
 
   Future<void> login({
-    required BuildContext context,
     required String email,
     required String password,
   }) async {
@@ -78,29 +53,10 @@ class UserService extends StateNotifier<AsyncValue<UserModel?>> {
             password: password,
           );
       final user = await ref.read(userRepositoryProvider).get(uid: uid);
-
       state = AsyncValue.data(user);
-      context.router.navigate(TabNavigationBuilderRoute());
-      ref.read(userStateProvider).clear();
     } catch (e) {
-      // Create custom dialog
-      showDialog(
-          context: context,
-          builder: (context) {
-            return AlertDialog(
-              title: Text("Opss"),
-              content: Text(e.toString()),
-              actions: [
-                TextButton(
-                  onPressed: () {
-                    context.router.pop();
-                  },
-                  child: Text("OK"),
-                ),
-              ],
-            );
-          });
-      // _handleException(e);
+      state = AsyncValue.data(null);
+      throw e;
     }
   }
 
@@ -109,28 +65,28 @@ class UserService extends StateNotifier<AsyncValue<UserModel?>> {
     state = AsyncValue.data(null);
   }
 
-  Future<void> testGetUser({required String uid}) async {
-    try {
-      await ref.read(userRepositoryProvider).get(uid: uid);
-    } catch (e) {
-      _handleException(e);
-    }
-  }
+  // Future<void> testGetUser({required String uid}) async {
+  //   try {
+  //     await ref.read(userRepositoryProvider).get(uid: uid);
+  //   } catch (e) {
+  //     _handleException(e);
+  //   }
+  // }
 
-  void _handleException(Object e) {
-    ref.read(userExceptionProvider).state = "$e";
-  }
+  // void _handleException(Object e) {
+  //   ref.read(userExceptionProvider).state = "$e";
+  // }
 }
 
-class UserException implements Exception {
-  const UserException(this.error);
+// class UserException implements Exception {
+//   const UserException(this.error);
 
-  final String error;
+//   final String error;
 
-  @override
-  String toString() {
-    return '''
-    User Error: $error
-    ''';
-  }
-}
+//   @override
+//   String toString() {
+//     return '''
+//     User Error: $error
+//     ''';
+//   }
+// }

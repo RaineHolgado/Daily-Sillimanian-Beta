@@ -52,7 +52,7 @@ class AuthenticationService {
   }
 
   Future<void> signOutUser() async {
-    ref.read(configRepository).removeUser();
+    await ref.read(configRepository).removeUser();
     await _firebaseAuth.signOut();
   }
 }

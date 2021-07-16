@@ -1,5 +1,5 @@
 import 'package:daily_sillimanian_beta/helpers/constants.dart';
-import 'package:daily_sillimanian_beta/screens/landing_screen/start_up/startup_view.dart';
+import 'package:daily_sillimanian_beta/screens/landing_screen/startup_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

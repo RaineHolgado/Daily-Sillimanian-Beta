@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:daily_sillimanian_beta/common/auth_header.dart';
 import 'package:daily_sillimanian_beta/helpers/constants.dart';
-import 'package:daily_sillimanian_beta/screens/landing_screen/user_state.dart';
+import 'package:daily_sillimanian_beta/screens/landing_screen/authState_controller.dart';
 import 'package:daily_sillimanian_beta/services/user_service.dart';
 import 'package:flutter/material.dart';
 import 'package:daily_sillimanian_beta/common/auth_elevatedbutton.dart';

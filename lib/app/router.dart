@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:daily_sillimanian_beta/screens/landing_screen/landing_page_builder.dart';
-import 'package:daily_sillimanian_beta/screens/landing_screen/login/login_view.dart';
-import 'package:daily_sillimanian_beta/screens/landing_screen/register/register_view.dart';
-import 'package:daily_sillimanian_beta/screens/landing_screen/start_up/startup_view.dart';
+import 'package:daily_sillimanian_beta/screens/landing_screen/login_view.dart';
+import 'package:daily_sillimanian_beta/screens/landing_screen/register_view.dart';
+import 'package:daily_sillimanian_beta/screens/landing_screen/startup_view.dart';
 import 'package:daily_sillimanian_beta/screens/tab_navigation/home/home_detail_view.dart';
 import 'package:daily_sillimanian_beta/screens/tab_navigation/home/home_view.dart';
 import 'package:daily_sillimanian_beta/screens/tab_navigation/inbox/inbox_detail_view.dart';
