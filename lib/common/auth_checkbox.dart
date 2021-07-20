@@ -27,7 +27,7 @@ class _AuthCheckBoxState extends State<AuthCheckBox> {
           Container(
             child: Checkbox(
               value: _value,
-              activeColor: colorPalleteSecondary,
+              activeColor: primaryAppColor,
               onChanged: (bool? val) {
                 setState(() {
                   _value = val!;
@@ -41,17 +41,14 @@ class _AuthCheckBoxState extends State<AuthCheckBox> {
             child: RichText(
               text: TextSpan(
                 text: 'Creating account means agreeing to the ',
-                style: Theme.of(context)
-                    .primaryTextTheme
-                    .overline!
-                    .copyWith(color: colorPalleteCaption),
+                style: Theme.of(context).primaryTextTheme.caption,
                 children: <TextSpan>[
                   TextSpan(
                     text: 'terms and conditions',
                     style: Theme.of(context)
                         .primaryTextTheme
-                        .overline!
-                        .copyWith(color: colorPalleteSecondary),
+                        .caption!
+                        .copyWith(color: primaryAppColor),
                   ),
                 ],
               ),

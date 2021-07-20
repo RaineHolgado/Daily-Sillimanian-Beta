@@ -3,19 +3,19 @@
 
 // // MAIN HANDLER COLOR THEMING
 // final ColorScheme colorScheme = ColorScheme(
-//   primary: colorPalletePrimary,
+//   primary: blackAppColor,
 //   //No color yet, must be lighter than primary color
-//   primaryVariant: colorPalleteCaption,
-//   secondary: colorPalleteSecondary,
+//   primaryVariant: greyAppColor,
+//   secondary: primaryAppColor,
 //   secondaryVariant: Colors.transparent,
 //   surface: Colors.transparent,
-//   background: colorPalleteBg,
+//   background: whiteAppcolor,
 //   error: Colors.red,
-//   onPrimary: colorPalleteBg,
-//   onSecondary: colorPalleteBg,
+//   onPrimary: whiteAppcolor,
+//   onSecondary: whiteAppcolor,
 //   onSurface: Colors.transparent,
-//   onBackground: colorPalletePrimary,
-//   onError: colorPalleteBg,
+//   onBackground: blackAppColor,
+//   onError: whiteAppcolor,
 //   brightness: Brightness.light,
 // );
 
@@ -41,7 +41,7 @@
 //           elevation: 0,
 //           backgroundColor: Colors.white,
 //           iconTheme: IconThemeData(
-//             color: colorPalleteCaption,
+//             color: greyAppColor,
 //             size: 20,
 //           ),
 //           titleTextStyle: TextStyle(
@@ -49,13 +49,13 @@
 //             letterSpacing: 1,
 //             fontSize: 20,
 //             fontWeight: FontWeight.bold,
-//             color: colorPalletePrimary,
+//             color: blackAppColor,
 //           )),
 
 //       //INPUT TEXTFIELD THEME
 //       inputDecorationTheme: InputDecorationTheme(
 //         border: InputBorder.none,
-//         hintStyle: primaryFont.bodyText1!.copyWith(color: colorPalleteCaption),
+//         hintStyle: primaryFont.bodyText1!.copyWith(color: greyAppColor),
 //         errorStyle: primaryFont.overline!.copyWith(color: colorScheme.error),
 //         labelStyle: primaryFont.overline,
 //         errorBorder: OutlineInputBorder(
@@ -77,11 +77,11 @@
 //         selectedIconTheme: IconThemeData(size: 25),
 //         unselectedIconTheme: IconThemeData(size: 25),
 //         selectedLabelStyle: primaryFont.overline!.copyWith(
-//           color: colorPalleteSecondary,
+//           color: primaryAppColor,
 //           fontSize: 10,
 //         ),
 //         unselectedLabelStyle: primaryFont.overline!.copyWith(
-//           color: colorPalleteSecondary,
+//           color: primaryAppColor,
 //           fontSize: 10,
 //         ),
 //       ),
@@ -125,42 +125,42 @@
 //     letterSpacing: 1,
 //     fontSize: 50,
 //     fontWeight: FontWeight.normal,
-//     color: colorPalletePrimary,
+//     color: blackAppColor,
 //   ),
 //   headline2: TextStyle(
 //     fontFamily: 'Montserrat',
 //     letterSpacing: 1,
 //     fontSize: 45,
 //     fontWeight: FontWeight.normal,
-//     color: colorPalletePrimary,
+//     color: blackAppColor,
 //   ),
 //   headline3: TextStyle(
 //     fontFamily: 'Montserrat',
 //     letterSpacing: 1,
 //     fontSize: 40,
 //     fontWeight: FontWeight.normal,
-//     color: colorPalletePrimary,
+//     color: blackAppColor,
 //   ),
 //   headline4: TextStyle(
 //     fontFamily: 'Montserrat',
 //     letterSpacing: 1,
 //     fontSize: 35,
 //     fontWeight: FontWeight.normal,
-//     color: colorPalletePrimary,
+//     color: blackAppColor,
 //   ),
 //   headline5: TextStyle(
 //     fontFamily: 'Montserrat',
 //     letterSpacing: 1,
 //     fontSize: 30,
 //     fontWeight: FontWeight.bold,
-//     color: colorPalletePrimary,
+//     color: blackAppColor,
 //   ),
 //   headline6: TextStyle(
 //     fontFamily: 'Montserrat',
 //     letterSpacing: 1,
 //     fontSize: 25,
 //     fontWeight: FontWeight.normal,
-//     color: colorPalletePrimary,
+//     color: blackAppColor,
 //   ),
 //   //Subtitles and Captions
 //   subtitle1: TextStyle(
@@ -168,28 +168,28 @@
 //     letterSpacing: 1,
 //     fontSize: 20,
 //     fontWeight: FontWeight.normal,
-//     color: colorPalletePrimary,
+//     color: blackAppColor,
 //   ),
 //   subtitle2: TextStyle(
 //     fontFamily: 'Montserrat',
 //     letterSpacing: 1,
 //     fontSize: 20,
 //     fontWeight: FontWeight.bold,
-//     color: colorPalletePrimary,
+//     color: blackAppColor,
 //   ),
 //   caption: TextStyle(
 //     fontFamily: 'Montserrat',
 //     letterSpacing: 1,
 //     fontSize: 20,
 //     fontWeight: FontWeight.normal,
-//     color: colorPalleteCaption,
+//     color: greyAppColor,
 //   ),
 //   overline: TextStyle(
 //     fontFamily: 'Montserrat',
 //     letterSpacing: 1,
 //     fontSize: 13,
 //     fontWeight: FontWeight.normal,
-//     color: colorPalletePrimary,
+//     color: blackAppColor,
 //   ),
 //   //Normal Texts
 //   bodyText1: TextStyle(
@@ -197,14 +197,14 @@
 //     letterSpacing: 1,
 //     fontSize: 15,
 //     fontWeight: FontWeight.normal,
-//     color: colorPalletePrimary,
+//     color: blackAppColor,
 //   ),
 //   bodyText2: TextStyle(
 //     fontFamily: 'Montserrat',
 //     letterSpacing: 1,
 //     fontSize: 15,
 //     fontWeight: FontWeight.bold,
-//     color: colorPalletePrimary,
+//     color: blackAppColor,
 //   ),
 //   //Button Text
 //   button: TextStyle(
@@ -212,7 +212,7 @@
 //     letterSpacing: 1,
 //     fontSize: 15,
 //     fontWeight: FontWeight.normal,
-//     color: colorPalletePrimary,
+//     color: blackAppColor,
 //   ),
 // );
 

@@ -9,13 +9,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 //   return UserState(ref);
 // });
 
-final userStateProvider = ChangeNotifierProvider<UserState>((ref) {
+final authStateControllerProvider = ChangeNotifierProvider<AuthStateController>((ref) {
   ref.onDispose(() {});
-  return UserState(ref);
+  return AuthStateController(ref);
 });
 
-class UserState extends ChangeNotifier {
-  UserState(
+class AuthStateController extends ChangeNotifier {
+  AuthStateController(
     this.ref, [
     this.isCheck = false,
     this.errorAgreed = false,
@@ -24,7 +24,7 @@ class UserState extends ChangeNotifier {
   final ProviderRefBase ref;
 
   final TextEditingController emailController =
-      TextEditingController(text: "a");
+      TextEditingController(text: "a@a.com");
   final TextEditingController passwordController =
       TextEditingController(text: "123456");
   final TextEditingController retypePasswordController =

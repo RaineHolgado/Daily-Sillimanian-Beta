@@ -2,6 +2,7 @@ import 'package:daily_sillimanian_beta/common/main_filters.dart';
 import 'package:daily_sillimanian_beta/helpers/constants.dart';
 import 'package:daily_sillimanian_beta/screens/tab_navigation/home/today_view.dart';
 import 'package:daily_sillimanian_beta/screens/tab_navigation/home/upcoming_view.dart';
+import 'package:daily_sillimanian_beta/screens/tab_navigation/tabNavigation_builder_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ionicons/ionicons.dart';
@@ -28,7 +29,7 @@ class HomeView extends StatelessWidget {
                 style: Theme.of(context)
                     .primaryTextTheme
                     .bodyText2!
-                    .copyWith(color: colorPalleteBg),
+                    .copyWith(color: whiteAppcolor),
               ),
             ),
           ],
@@ -44,7 +45,7 @@ class HomeView extends StatelessWidget {
               onPressed: () {},
               icon: Icon(
                 Ionicons.search_outline,
-                color: colorPalletePrimary,
+                color: blackAppColor,
               ),
             ),
           )
@@ -64,6 +65,9 @@ class HomeView extends StatelessWidget {
                 SizedBox(height: 10),
                 Expanded(
                   child: ListView(
+                    controller: ref.watch(scrollControlerProvider).state,
+                    keyboardDismissBehavior:
+                        ScrollViewKeyboardDismissBehavior.onDrag,
                     children: [
                       Container(
                         child: IndexedStack(

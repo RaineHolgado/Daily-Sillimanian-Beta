@@ -22,10 +22,11 @@ import 'package:daily_sillimanian_beta/screens/tab_navigation/organization/organ
       // path: '/', //please remove
       page: TabNavigationBuilderView,
       children: [
-        AutoRoute(
+        CustomRoute(
           path: 'home',
           page: EmptyRouterPage,
           name: "HomeTab",
+          transitionsBuilder: TransitionsBuilders.slideRight,
           children: [
             AutoRoute(path: '', page: HomeView),
             AutoRoute(
@@ -34,10 +35,11 @@ import 'package:daily_sillimanian_beta/screens/tab_navigation/organization/organ
             ),
           ],
         ),
-        AutoRoute(
+        CustomRoute(
           path: 'organization',
           name: "OrganizationTab",
           page: EmptyRouterPage,
+          transitionsBuilder: TransitionsBuilders.slideRight,
           children: [
             AutoRoute(path: '', page: OrganizationView),
             AutoRoute(
@@ -46,10 +48,11 @@ import 'package:daily_sillimanian_beta/screens/tab_navigation/organization/organ
             ),
           ],
         ),
-        AutoRoute(
+        CustomRoute(
           path: 'inbox',
           name: "InboxTab",
           page: EmptyRouterPage,
+          transitionsBuilder: TransitionsBuilders.slideRight,
           children: [
             AutoRoute(path: '', page: InboxView),
             AutoRoute(

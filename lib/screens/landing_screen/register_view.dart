@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import 'package:daily_sillimanian_beta/common/auth_checkbox.dart';
 import 'package:daily_sillimanian_beta/common/auth_elevatedbutton.dart';
 import 'package:daily_sillimanian_beta/common/auth_header.dart';
@@ -14,9 +13,9 @@ class RegisterView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     print("Rebuild");
-    final userAuthState = ref.watch(userStateProvider);
+    final userAuthState = ref.watch(authStateControllerProvider);
     final state =
-        ref.watch(userStateProvider.select((value) => value.errorAgreed));
+        ref.watch(authStateControllerProvider.select((value) => value.errorAgreed));
 
     return DsbScaffold(
       appBarTitle: "REGISTER",
@@ -28,12 +27,12 @@ class RegisterView extends ConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
             children: [
-              AuthHeader(
+              const AuthHeader(
                 text: "CREATE",
                 childrenText1: " AN",
                 childrenText2: " ACCOUNT",
               ),
-              SizedBox(height: 55),
+              const SizedBox(height: 55),
               Form(
                 key: userAuthState.formKey,
                 // autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -51,7 +50,7 @@ class RegisterView extends ConsumerWidget {
                         }
                       },
                     ),
-                    SizedBox(height: 15),
+                    const SizedBox(height: 15),
                     InputTextFormField(
                       label: "Password",
                       controller: userAuthState.passwordController,
@@ -64,7 +63,7 @@ class RegisterView extends ConsumerWidget {
                         }
                       },
                     ),
-                    SizedBox(height: 15),
+                    const SizedBox(height: 15),
                     InputTextFormField(
                       label: "Re-type Password",
                       controller: userAuthState.retypePasswordController,
@@ -80,28 +79,26 @@ class RegisterView extends ConsumerWidget {
                         }
                       },
                     ),
-                    SizedBox(height: 12),
+                    const SizedBox(height: 12),
                     AuthCheckBox(
                       value: userAuthState.isCheck,
                       onChanged: (val) {
-                        ref.read(userStateProvider).icCheckBool(val!);
+                        ref.read(authStateControllerProvider).icCheckBool(val!);
                       },
                     ),
-                    SizedBox(height: 5),
+                    const SizedBox(height: 5),
                     state
-                        ? Center(
+                        ? const Center(
                             child: Text(
                               "Please Check Terms of Use and Privacy Policy",
                               style: TextStyle(
                                 fontSize: 12,
-                                fontFamily: "Courier Prime",
-                                fontWeight: FontWeight.normal,
                                 color: Colors.red,
                               ),
                             ),
                           )
-                        : SizedBox(),
-                    SizedBox(height: 40),
+                        : const SizedBox(),
+                    const SizedBox(height: 40),
                     Consumer(builder: (context, ref, _) {
                       // ref.listen(
                       //   userExceptionProvider,
@@ -123,10 +120,10 @@ class RegisterView extends ConsumerWidget {
                             onPressed: () {
                               userAuthState.submitFormRegister(context);
                             },
-                            labeltStyle: Theme.of(context)
+                            labelStyle: Theme.of(context)
                                 .primaryTextTheme
-                                .bodyText1!
-                                .copyWith(color: colorPalleteBg),
+                                .button!
+                                .copyWith(color: whiteAppcolor),
                           );
                         },
                         orElse: () => Center(

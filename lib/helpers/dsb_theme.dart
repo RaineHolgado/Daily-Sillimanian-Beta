@@ -1,27 +1,28 @@
 import 'package:daily_sillimanian_beta/helpers/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 // MAIN HANDLER COLOR THEMING
 final ColorScheme colorScheme = ColorScheme(
-  primary: colorPalletePrimary,
-  //No color yet, must be lighter than primary color
-  primaryVariant: colorPalleteCaption,
-  secondary: colorPalleteSecondary,
+  primary: primaryAppColor,
+  primaryVariant: onPrimaryAppColor,
+  secondary: primaryAppColor,
   secondaryVariant: Colors.transparent,
   surface: Colors.transparent,
-  background: colorPalleteBg,
+  background: whiteAppcolor,
   error: Colors.red,
-  onPrimary: colorPalleteBg,
-  onSecondary: colorPalleteBg,
+  onPrimary: onPrimaryAppColor,
+  onSecondary: whiteAppcolor,
   onSurface: Colors.transparent,
-  onBackground: colorPalletePrimary,
-  onError: colorPalleteBg,
+  onBackground: Colors.transparent,
+  onError: Colors.orange,
   brightness: Brightness.light,
 );
 
-class CustomTheme {
+class DailySillimanTheme {
   final BuildContext context;
-  CustomTheme(this.context);
+  DailySillimanTheme(this.context);
+  
   ThemeData get lightTheme {
     return ThemeData(
       fontFamily: 'Montserrat',
@@ -29,34 +30,29 @@ class CustomTheme {
       primaryColor: colorScheme.secondary,
       scaffoldBackgroundColor: colorScheme.background,
 
-      //FLOATING ACTION BUTTON THEME
-      floatingActionButtonTheme: FloatingActionButtonThemeData(),
-
       textSelectionTheme:
           TextSelectionThemeData(cursorColor: colorScheme.primary),
 
       //APPBAR THEME
       appBarTheme: AppBarTheme(
-          centerTitle: true,
-          elevation: 0,
-          backgroundColor: Colors.white,
-          iconTheme: IconThemeData(
-            color: colorPalleteCaption,
-            size: 20,
-          ),
-          titleTextStyle: TextStyle(
-            fontFamily: 'Montserrat',
-            letterSpacing: 1,
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-            color: colorPalletePrimary,
-          )),
+        // systemOverlayStyle: SystemUiOverlayStyle.dark,
+        centerTitle: true,
+        elevation: 0,
+        backgroundColor: Colors.white,
+        iconTheme: IconThemeData(
+          color: blackAppColor,
+          size: 20,
+        ),
+        titleTextStyle: TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.w400,
+          color: blackAppColor,
+        ),
+      ),
 
       //INPUT TEXTFIELD THEME
       inputDecorationTheme: InputDecorationTheme(
         border: InputBorder.none,
-        // hintStyle: primaryFont.bodyText1!.copyWith(color: colorPalleteCaption),
-        // errorStyle: primaryFont.overline!.copyWith(color: colorScheme.error),
         labelStyle: primaryFont.overline,
         errorBorder: OutlineInputBorder(
           borderSide: BorderSide(color: colorScheme.error),
@@ -67,21 +63,29 @@ class CustomTheme {
           borderRadius: BorderRadius.circular(5.0),
         ),
         focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: colorScheme.primary),
+          borderSide: BorderSide(color: blackAppColor),
           borderRadius: BorderRadius.circular(5.0),
         ),
       ),
 
       //BOTTOM NAVIGATION BAR THEME
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
-        selectedIconTheme: IconThemeData(size: 25),
-        unselectedIconTheme: IconThemeData(size: 25),
-        selectedLabelStyle: primaryFont.overline!.copyWith(
-          color: colorPalleteSecondary,
+        showSelectedLabels: true,
+        showUnselectedLabels: true,
+        selectedIconTheme: const IconThemeData(
+          size: 25,
+          color: primaryAppColor,
+        ),
+        unselectedIconTheme: const IconThemeData(
+          size: 25,
+          color: const Color(0xFF555555),
+        ),
+        selectedLabelStyle: const TextStyle(
+          color: primaryAppColor,
           fontSize: 10,
         ),
-        unselectedLabelStyle: primaryFont.overline!.copyWith(
-          color: colorPalleteSecondary,
+        unselectedLabelStyle: const TextStyle(
+          color: const Color(0xFF555555),
           fontSize: 10,
         ),
       ),
@@ -118,206 +122,83 @@ class CustomTheme {
   }
 }
 
-// Fonts
-const TextTheme primaryFont = TextTheme(
-  headline1: TextStyle(
-    // fontFamily: 'Montserrat',
-    letterSpacing: 1,
-    fontSize: 50,
-    fontWeight: FontWeight.normal,
-    color: colorPalletePrimary,
-  ),
-  headline2: TextStyle(
-    // fontFamily: 'Montserrat',
-    letterSpacing: 1,
-    fontSize: 45,
-    fontWeight: FontWeight.normal,
-    color: colorPalletePrimary,
-  ),
-  headline3: TextStyle(
-    // fontFamily: 'Montserrat',
-    letterSpacing: 1,
-    fontSize: 40,
-    fontWeight: FontWeight.normal,
-    color: colorPalletePrimary,
-  ),
-  headline4: TextStyle(
-    // fontFamily: 'Montserrat',
-    letterSpacing: 1,
-    fontSize: 35,
-    fontWeight: FontWeight.normal,
-    color: colorPalletePrimary,
-  ),
-  headline5: TextStyle(
-    // fontFamily: 'Montserrat',
-    letterSpacing: 1,
-    fontSize: 24,
-    fontWeight: FontWeight.bold,
-    color: colorPalletePrimary,
-  ),
-  headline6: TextStyle(
-    // fontFamily: 'Montserrat',
-    letterSpacing: 1,
-    fontSize: 20,
-    fontWeight: FontWeight.normal,
-    color: colorPalletePrimary,
-  ),
-  //Subtitles and Captions
-  subtitle1: TextStyle(
-    // fontFamily: 'Montserrat',
-    letterSpacing: 1,
-    fontSize: 16,
-    fontWeight: FontWeight.normal,
-    color: colorPalletePrimary,
-  ),
-  subtitle2: TextStyle(
-    // fontFamily: 'Montserrat',
-    // letterSpacing: 1,
-    fontSize: 14,
-    // fontWeight: FontWeight.bold,
-    color: colorPalletePrimary,
-  ),
-  caption: TextStyle(
-    // fontFamily: 'Montserrat',
-    // letterSpacing: 1,
-    fontSize: 12,
-    // fontWeight: FontWeight.normal,
-    color: colorPalleteCaption,
-  ),
-  overline: TextStyle(
-    // fontFamily: 'Montserrat',
-    // letterSpacing: 1,
-    fontSize: 10,
-    // fontWeight: FontWeight.normal,
-    color: colorPalletePrimary,
-  ),
-  //Normal Texts
-  bodyText1: TextStyle(
-    // fontFamily: 'Montserrat',
-    // letterSpacing: 1,
-    fontSize: 16,
-    // fontWeight: FontWeight.normal,
-    color: colorPalletePrimary,
-  ),
-  bodyText2: TextStyle(
-    // fontFamily: 'Montserrat',
-    // letterSpacing: 1,
-    fontSize: 14,
-    // fontWeight: FontWeight.bold,
-    color: colorPalletePrimary,
-  ),
-  //Button Text
-  button: TextStyle(
-    // fontFamily: 'Montserrat',
-    letterSpacing: 1,
-    fontSize: 15,
-    fontWeight: FontWeight.normal,
-    color: colorPalletePrimary,
-  ),
-);
-
-//import 'package:daily_sillimanian_beta/helpers/constants.dart';
-// import 'package:flutter/material.dart';
-
-// // MAIN HANDLER COLOR THEMING
-// const ColorScheme colorScheme = ColorScheme(
-//   primary: primaryAppcolor,
-//   primaryVariant:
-//       Colors.transparent, //No color yet, must be lighter than primary color
-//   secondary: secondaryAppcolor,
-//   secondaryVariant: Colors.transparent,
-//   surface: Colors.transparent,
-//   background: Colors.white,
-//   error: Colors.red,
-//   onPrimary: secondaryAppcolor,
-//   onSecondary: Colors.white,
-//   onSurface: Colors.black,
-//   onBackground: Colors.black,
-//   onError: Colors.orange,
-//   brightness: Brightness.light,
-// );
-
-// ThemeData AppTheme(BuildContext context) {
-//   return ThemeData(
-//     fontFamily: "Montserrat",
-//     colorScheme: colorScheme,
-//     primaryColor: colorScheme.primary,
-//     scaffoldBackgroundColor: colorScheme.background,
-//     textSelectionTheme: TextSelectionThemeData(cursorColor: Colors.black),
-//     appBarTheme: AppBarTheme(
-//       centerTitle: true,
-//       elevation: 0,
-//       backgroundColor: Colors.white,
-//       iconTheme: IconThemeData(
-//         color: Colors.black,
-//         size: 20,
-//       ),
-//       titleTextStyle: TextStyle(
-//         color: Colors.black,
-//         fontSize: 18,
-//         fontWeight: FontWeight.w500,
-//       ),
-//     ),
-//     inputDecorationTheme: InputDecorationTheme(
-//       hintStyle: TextStyle(
-//         fontSize: 16,
-//         color: Colors.black45,
-//       ),
-//       border: InputBorder.none,
-//     ),
-//     outlinedButtonTheme: OutlinedButtonThemeData(
-//       style: ButtonStyle(
-//         side: MaterialStateProperty.all(BorderSide(
-//           color: colorScheme.primary,
-//         )),
-//         shape: MaterialStateProperty.all(RoundedRectangleBorder(
-//           borderRadius: BorderRadius.circular(5.0),
-//         )),
-//       ),
-//     ),
-//     elevatedButtonTheme: ElevatedButtonThemeData(
-//       style: ButtonStyle(
-//         backgroundColor: MaterialStateProperty.all(colorScheme.primary),
-//         shape: MaterialStateProperty.all(RoundedRectangleBorder(
-//           borderRadius: BorderRadius.circular(5.0),
-//         )),
-//         // overlayColor: MaterialStateProperty.all(Color(0xFF870510)),
-//       ),
-//     ),
-//     primaryTextTheme: primaryTextTheme,
-//     platform: Theme.of(context).platform,
-//   );
-// }
-
 // // Sizes References: https://api.flutter.dev/flutter/material/TextTheme-class.html
 // // Responsive Sizing: https://www.youtube.com/watch?v=LWteDQes4Kk&t=831s
-// const primaryTextTheme = TextTheme(
-//   headline2: TextStyle(
-//     fontFamily: "Quantico",
-//     letterSpacing: 0.75,
-//     height: 1.2,
-//     fontSize: 50.0,
-//     fontWeight: FontWeight.w700,
-//     color: primaryAppcolor,
-//   ),
-//   headline3: TextStyle(
-//     fontFamily: "Quantico",
-//     height: 1.2,
-//     fontSize: 40.0,
-//     fontWeight: FontWeight.w700,
-//     color: Colors.black,
-//   ),
-//   headline4: TextStyle(
-//     fontFamily: "Quantico",
-//     height: 1.2,
-//     fontSize: 28.0,
-//     fontWeight: FontWeight.w700,
-//     color: Colors.white,
-//   ),
-//   button: TextStyle(
-//     letterSpacing: 3,
-//     color: Colors.white,
-//     fontSize: 13.0,
-//     fontWeight: FontWeight.w600,
-//   ),
-// );
+// Fonts
+const TextTheme primaryFont = TextTheme(
+  // headline1: TextStyle(
+  //   letterSpacing: 1,
+  //   fontSize: 50,
+  //   fontWeight: FontWeight.normal,
+  //   color: blackAppColor,
+  // ),
+  // headline2: TextStyle(
+  //   letterSpacing: 1,
+  //   fontSize: 45,
+  //   fontWeight: FontWeight.normal,
+  //   color: blackAppColor,
+  // ),
+  // headline3: TextStyle(
+  //   letterSpacing: 1,
+  //   fontSize: 40,
+  //   fontWeight: FontWeight.normal,
+  //   color: blackAppColor,
+  // ),
+  // headline4: TextStyle(
+  //   letterSpacing: 1,
+  //   fontSize: 35,
+  //   fontWeight: FontWeight.normal,
+  //   color: blackAppColor,
+  // ),
+  headline5: TextStyle(
+    fontSize: 25,
+    fontWeight: FontWeight.w400,
+    color: blackAppColor,
+  ),
+  // headline6: TextStyle(
+  //   letterSpacing: 1,
+  //   fontSize: 20,
+  //   fontWeight: FontWeight.normal,
+  //   color: blackAppColor,
+  // ),
+  //Subtitles and Captions
+  // subtitle1: TextStyle(
+  //   letterSpacing: 1,
+  //   fontSize: 16,
+  //   fontWeight: FontWeight.normal,
+  //   color: blackAppColor,
+  // ),
+  subtitle2: TextStyle(
+    letterSpacing: 1,
+    fontSize: 14,
+    fontWeight: FontWeight.bold,
+    color: blackAppColor,
+  ),
+  caption: TextStyle(
+    fontSize: 13,
+    fontWeight: FontWeight.w400,
+    color: greyAppColor,
+  ),
+  overline: TextStyle(
+    letterSpacing: 1,
+    fontSize: 13,
+    fontWeight: FontWeight.w600,
+    color: blackAppColor,
+  ),
+  bodyText1: TextStyle(
+    fontSize: 15,
+    fontWeight: FontWeight.w400,
+    color: blackAppColor,
+  ),
+  bodyText2: TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.bold,
+    color: blackAppColor,
+  ),
+  button: TextStyle(
+    letterSpacing: 1,
+    fontSize: 15,
+    fontWeight: FontWeight.w400,
+    color: blackAppColor,
+  ),
+);

@@ -12,12 +12,9 @@ class LandingPageBuilder extends ConsumerWidget {
       future: initialization,
       builder: (context, snapshot) {
         if (snapshot.hasError) {
-          return Scaffold(
-            body: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text("Something went wrong"),
-              ],
+          return const Scaffold(
+            body: Center(
+              child: Text("Something went wrong"),
             ),
           );
         }
@@ -26,12 +23,9 @@ class LandingPageBuilder extends ConsumerWidget {
           return StartUpView();
         }
 
-        return Scaffold(
-          body: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CircularProgressIndicator(),
-            ],
+        return const Scaffold(
+          body: Center(
+            child: CircularProgressIndicator(),
           ),
         );
       },

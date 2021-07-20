@@ -22,17 +22,17 @@ class AuthHeader extends StatelessWidget {
           text: text,
           style: Theme.of(context)
               .primaryTextTheme
-              .headline6!
-              .copyWith(color: colorPalleteSecondary),
+              .headline5!
+              .copyWith(color: primaryAppColor),
           children: <TextSpan>[
             TextSpan(
               text: childrenText1,
-              style: Theme.of(context).primaryTextTheme.headline6,
+              style: Theme.of(context).primaryTextTheme.headline5,
             ),
             TextSpan(
               text: childrenText2,
-              style: Theme.of(context).primaryTextTheme.headline6!.copyWith(
-                    fontWeight: FontWeight.bold,
+              style: Theme.of(context).primaryTextTheme.headline5!.copyWith(
+                    fontWeight: FontWeight.w500,
                   ),
             ),
           ],

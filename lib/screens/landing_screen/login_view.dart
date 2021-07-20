@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:daily_sillimanian_beta/common/auth_header.dart';
 import 'package:daily_sillimanian_beta/helpers/constants.dart';
 import 'package:daily_sillimanian_beta/screens/landing_screen/authState_controller.dart';
@@ -12,7 +11,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class LoginView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final userAuthState = ref.watch(userStateProvider);
+    final userAuthState = ref.watch(authStateControllerProvider);
 
     return DsbScaffold(
       appBarTitle: "LOGIN",
@@ -24,15 +23,15 @@ class LoginView extends ConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
             children: [
-              AuthHeader(
+              const AuthHeader(
                 text: "LOGIN",
                 childrenText1: " TO YOUR",
                 childrenText2: " ACCOUNT",
               ),
-              SizedBox(height: 55),
+              const SizedBox(height: 55),
               Form(
                 key: userAuthState.formKey,
-                autovalidateMode: AutovalidateMode.onUserInteraction,
+                // autovalidateMode: AutovalidateMode.onUserInteraction,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
@@ -47,7 +46,7 @@ class LoginView extends ConsumerWidget {
                         }
                       },
                     ),
-                    SizedBox(height: 15),
+                    const SizedBox(height: 15),
                     InputTextFormField(
                       label: "Password",
                       controller: userAuthState.passwordController,
@@ -60,23 +59,23 @@ class LoginView extends ConsumerWidget {
                         }
                       },
                     ),
-                    SizedBox(height: 15),
+                    const SizedBox(height: 15),
                     Container(
                       width: 280,
                       alignment: Alignment.centerLeft,
                       child: GestureDetector(
                         onTap: () {},
-                        child: Text(
+                        child: const Text(
                           "forgot password",
                           style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400,
-                              // color: Color(0xFF870510),
-                              color: Colors.blueAccent),
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.blueAccent,
+                          ),
                         ),
                       ),
                     ),
-                    SizedBox(height: 40),
+                    const SizedBox(height: 40),
                     Consumer(builder: (context, ref, _) {
                       final userState = ref.watch(userServiceProvider);
                       return userState.maybeWhen(
@@ -86,13 +85,13 @@ class LoginView extends ConsumerWidget {
                             onPressed: () {
                               userAuthState.submitFormLogin(context);
                             },
-                            labeltStyle: Theme.of(context)
+                            labelStyle: Theme.of(context)
                                 .primaryTextTheme
-                                .bodyText1!
-                                .copyWith(color: colorPalleteBg),
+                                .button!
+                                .copyWith(color: whiteAppcolor),
                           );
                         },
-                        orElse: () => Center(
+                        orElse: () => const Center(
                           child: CircularProgressIndicator(),
                         ),
                       );
