@@ -60,21 +60,30 @@ class AppRouter extends _i1.RootStackRouter {
         builder: (_) {
           return const _i7.TabNavigationBuilderView();
         }),
-    HomeTab.name: (routeData) => _i1.AdaptivePage<dynamic>(
+    HomeTab.name: (routeData) => _i1.CustomPage<dynamic>(
         routeData: routeData,
         builder: (_) {
           return const _i1.EmptyRouterPage();
-        }),
-    OrganizationTab.name: (routeData) => _i1.AdaptivePage<dynamic>(
+        },
+        transitionsBuilder: _i1.TransitionsBuilders.slideRight,
+        opaque: true,
+        barrierDismissible: false),
+    OrganizationTab.name: (routeData) => _i1.CustomPage<dynamic>(
         routeData: routeData,
         builder: (_) {
           return const _i1.EmptyRouterPage();
-        }),
-    InboxTab.name: (routeData) => _i1.AdaptivePage<dynamic>(
+        },
+        transitionsBuilder: _i1.TransitionsBuilders.slideRight,
+        opaque: true,
+        barrierDismissible: false),
+    InboxTab.name: (routeData) => _i1.CustomPage<dynamic>(
         routeData: routeData,
         builder: (_) {
           return const _i1.EmptyRouterPage();
-        }),
+        },
+        transitionsBuilder: _i1.TransitionsBuilders.slideRight,
+        opaque: true,
+        barrierDismissible: false),
     HomeRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {

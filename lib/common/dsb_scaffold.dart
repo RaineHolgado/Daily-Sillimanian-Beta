@@ -20,7 +20,7 @@ class DsbScaffold extends StatelessWidget {
         title: appBarTitle != null
             ? Text(
                 appBarTitle!,
-                style: Theme.of(context).primaryTextTheme.bodyText1,
+                style: Theme.of(context).appBarTheme.titleTextStyle,
               )
             : null,
       ),

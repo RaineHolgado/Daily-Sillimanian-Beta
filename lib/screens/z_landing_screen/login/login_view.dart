@@ -89,7 +89,7 @@
 //                             labeltStyle: Theme.of(context)
 //                                 .primaryTextTheme
 //                                 .bodyText1!
-//                                 .copyWith(color: colorPalleteBg),
+//                                 .copyWith(color: whiteAppcolor),
 //                           );
 //                         },
 //                         orElse: () => Center(

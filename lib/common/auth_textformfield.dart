@@ -80,7 +80,7 @@ class _InputTextFormFieldState extends State<InputTextFormField> {
                               isPassword
                                   ? Icons.visibility_off
                                   : Icons.visibility,
-                              color: colorPalleteCaption,
+                              color: greyAppColor,
                               size: 23),
                         )
                       : null,

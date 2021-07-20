@@ -76,7 +76,7 @@ class _FilterButton extends StatelessWidget {
                   style: Theme.of(context)
                       .primaryTextTheme
                       .bodyText1!
-                      .copyWith(color: colorPalleteBg)),
+                      .copyWith(color: whiteAppcolor)),
               style: TextButton.styleFrom(
                   shape: RoundedRectangleBorder(borderRadius: borderRadius)),
             )
@@ -85,7 +85,7 @@ class _FilterButton extends StatelessWidget {
                   style: Theme.of(context)
                       .primaryTextTheme
                       .bodyText1!
-                      .copyWith(color: colorPalleteSecondary)),
+                      .copyWith(color: primaryAppColor)),
               onPressed: onPressed,
               style: TextButton.styleFrom(
                   shape: RoundedRectangleBorder(borderRadius: borderRadius)),

@@ -7,14 +7,18 @@ import 'package:daily_sillimanian_beta/app/router.gr.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
-    SystemUiOverlayStyle(
-      // statusBarColor: Color(0xFF870510),
-      // systemNavigationBarColor: Color(0xFF870510),
+    const SystemUiOverlayStyle(
+      // statusBarColor: Color(0xFFBB1017),
+      // systemNavigationBarColor: Color(0xFFBB1017),
       statusBarColor: Colors.black,
       systemNavigationBarColor: Colors.black,
     ),
   );
-  runApp(ProviderScope(child: DailySillimanBetaApp()));
+  runApp(
+    ProviderScope(
+      child: DailySillimanBetaApp(),
+    ),
+  );
 }
 
 class DailySillimanBetaApp extends StatelessWidget {
@@ -23,8 +27,8 @@ class DailySillimanBetaApp extends StatelessWidget {
     final _appRouter = AppRouter();
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      title: 'Daily Sillimanian Beta',
-      theme: CustomTheme(context).lightTheme,
+      title: 'Daily Silliman',
+      theme: DailySillimanTheme(context).lightTheme,
       routerDelegate: AutoRouterDelegate(
         _appRouter,
         navigatorObservers: () => [AutoRouteObserver()],

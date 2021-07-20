@@ -46,10 +46,10 @@ class _StartUpViewState extends ConsumerState<StartUpView> {
               alignment: Alignment.topCenter,
               child: Column(
                 children: [
-                  SizedBox(height: 80),
+                  const SizedBox(height: 80),
                   Text("WELCOME TO",
                       style: Theme.of(context).primaryTextTheme.bodyText1),
-                  SizedBox(height: 25),
+                  const SizedBox(height: 25),
                   Container(
                     height: 320,
                     width: 250,
@@ -74,28 +74,23 @@ class _StartUpViewState extends ConsumerState<StartUpView> {
                       onPressed: () {
                         context.router.push(LoginRoute());
                       },
-                      labeltStyle: Theme.of(context)
+                      labelStyle: Theme.of(context)
                           .primaryTextTheme
-                          .bodyText1!
-                          .copyWith(color: colorPalleteBg),
+                          .button!
+                          .copyWith(color: whiteAppcolor),
                     ),
-                    SizedBox(height: 15),
+                    const SizedBox(height: 15),
                     AuthElevatedButton(
                       label: "REGISTER",
                       style: ElevatedButtonTheme.of(context).style!.copyWith(
-                            backgroundColor:
-                                MaterialStateProperty.all(Color(0xFFEFF0F1)),
-                            //0xFFE6E6E6
+                            backgroundColor: MaterialStateProperty.all(
+                                const Color(0xFFE6E6E6)),
                           ),
-                      labeltStyle: Theme.of(context)
-                          .primaryTextTheme
-                          .button!
-                          .copyWith(color: colorScheme.primary),
                       onPressed: () {
                         context.router.push(RegisterRoute());
                       },
                     ),
-                    SizedBox(height: 40),
+                    const SizedBox(height: 40),
                     Container(
                       width: 280,
                       alignment: Alignment.center,
@@ -107,7 +102,7 @@ class _StartUpViewState extends ConsumerState<StartUpView> {
                             style: Theme.of(context).primaryTextTheme.overline),
                       ),
                     ),
-                    SizedBox(height: 80),
+                    const SizedBox(height: 80),
                   ],
                 ),
               ),

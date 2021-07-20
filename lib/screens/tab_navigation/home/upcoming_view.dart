@@ -128,7 +128,7 @@ class EventCard extends StatelessWidget {
                 child: Icon(
                   Ionicons.notifications,
                   size: 23,
-                  color: colorPalleteCaption,
+                  color: greyAppColor,
                 ),
               ),
             ],
@@ -139,7 +139,7 @@ class EventCard extends StatelessWidget {
               Icon(
                 Ionicons.calendar_clear_sharp,
                 size: 18,
-                color: colorPalleteSecondary,
+                color: primaryAppColor,
               ),
               SizedBox(width: 5),
               Text(
@@ -147,7 +147,7 @@ class EventCard extends StatelessWidget {
                 style: Theme.of(context)
                     .primaryTextTheme
                     .overline!
-                    .copyWith(color: colorPalleteSecondary),
+                    .copyWith(color: primaryAppColor),
               ),
             ],
           )
