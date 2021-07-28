@@ -78,10 +78,10 @@ class AuthStateController extends ChangeNotifier {
     notifyListeners();
   }
 
-  void submitFormLogin(BuildContext context) {
+  void submitFormLogin(BuildContext context) async {
     if (formKey.currentState!.validate()) {
       try {
-        ref.read(userServiceProvider.notifier).login(
+        await ref.read(userServiceProvider.notifier).login(
               email: emailController.text.trim(),
               password: passwordController.text.trim(),
             );

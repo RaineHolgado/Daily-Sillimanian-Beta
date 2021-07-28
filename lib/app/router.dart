@@ -3,7 +3,7 @@ import 'package:daily_sillimanian_beta/screens/landing_screen/landing_page_build
 import 'package:daily_sillimanian_beta/screens/landing_screen/login_view.dart';
 import 'package:daily_sillimanian_beta/screens/landing_screen/register_view.dart';
 import 'package:daily_sillimanian_beta/screens/landing_screen/startup_view.dart';
-import 'package:daily_sillimanian_beta/screens/tab_navigation/home/home_detail_view.dart';
+import 'package:daily_sillimanian_beta/screens/tab_navigation/home/event_detail_view.dart';
 import 'package:daily_sillimanian_beta/screens/tab_navigation/home/home_view.dart';
 import 'package:daily_sillimanian_beta/screens/tab_navigation/inbox/inbox_detail_view.dart';
 import 'package:daily_sillimanian_beta/screens/tab_navigation/organization/organization_detail_view.dart';
@@ -14,8 +14,8 @@ import 'package:daily_sillimanian_beta/screens/tab_navigation/organization/organ
 @AdaptiveAutoRouter(
   replaceInRouteName: 'View,Route',
   routes: [
-    AutoRoute(page: LandingPageBuilder, initial: true),
-    AutoRoute(page: StartUpView),
+    // AutoRoute(page: LandingPageBuilder, initial: true),
+    AutoRoute(page: StartUpView, initial: true),
     AutoRoute(page: LoginView),
     AutoRoute(page: RegisterView),
     AutoRoute(
@@ -30,8 +30,8 @@ import 'package:daily_sillimanian_beta/screens/tab_navigation/organization/organ
           children: [
             AutoRoute(path: '', page: HomeView),
             AutoRoute(
-              path: 'home-detail',
-              page: HomeDetailView,
+              path: 'event-detail',
+              page: EventDetailView,
             ),
           ],
         ),

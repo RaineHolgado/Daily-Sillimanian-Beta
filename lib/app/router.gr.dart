@@ -5,28 +5,27 @@
 // **************************************************************************
 
 import 'package:auto_route/auto_route.dart' as _i1;
-import 'package:daily_sillimanian_beta/screens/landing_screen/landing_page_builder.dart'
-    as _i3;
+import 'package:daily_sillimanian_beta/models/models.dart' as _i13;
 import 'package:daily_sillimanian_beta/screens/landing_screen/login_view.dart'
-    as _i5;
-import 'package:daily_sillimanian_beta/screens/landing_screen/register_view.dart'
-    as _i6;
-import 'package:daily_sillimanian_beta/screens/landing_screen/startup_view.dart'
     as _i4;
-import 'package:daily_sillimanian_beta/screens/tab_navigation/home/home_detail_view.dart'
-    as _i9;
-import 'package:daily_sillimanian_beta/screens/tab_navigation/home/home_view.dart'
+import 'package:daily_sillimanian_beta/screens/landing_screen/register_view.dart'
+    as _i5;
+import 'package:daily_sillimanian_beta/screens/landing_screen/startup_view.dart'
+    as _i3;
+import 'package:daily_sillimanian_beta/screens/tab_navigation/home/event_detail_view.dart'
     as _i8;
-import 'package:daily_sillimanian_beta/screens/tab_navigation/inbox/inbox_detail_view.dart'
-    as _i13;
-import 'package:daily_sillimanian_beta/screens/tab_navigation/inbox/inbox_view.dart'
-    as _i12;
-import 'package:daily_sillimanian_beta/screens/tab_navigation/organization/organization_detail_view.dart'
-    as _i11;
-import 'package:daily_sillimanian_beta/screens/tab_navigation/organization/organization_view.dart'
-    as _i10;
-import 'package:daily_sillimanian_beta/screens/tab_navigation/tabNavigation_builder_view.dart'
+import 'package:daily_sillimanian_beta/screens/tab_navigation/home/home_view.dart'
     as _i7;
+import 'package:daily_sillimanian_beta/screens/tab_navigation/inbox/inbox_detail_view.dart'
+    as _i12;
+import 'package:daily_sillimanian_beta/screens/tab_navigation/inbox/inbox_view.dart'
+    as _i11;
+import 'package:daily_sillimanian_beta/screens/tab_navigation/organization/organization_detail_view.dart'
+    as _i10;
+import 'package:daily_sillimanian_beta/screens/tab_navigation/organization/organization_view.dart'
+    as _i9;
+import 'package:daily_sillimanian_beta/screens/tab_navigation/tabNavigation_builder_view.dart'
+    as _i6;
 import 'package:flutter/material.dart' as _i2;
 
 class AppRouter extends _i1.RootStackRouter {
@@ -35,30 +34,25 @@ class AppRouter extends _i1.RootStackRouter {
 
   @override
   final Map<String, _i1.PageFactory> pagesMap = {
-    LandingPageBuilder.name: (routeData) => _i1.AdaptivePage<dynamic>(
-        routeData: routeData,
-        builder: (_) {
-          return const _i3.LandingPageBuilder();
-        }),
     StartUpRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return const _i4.StartUpView();
+          return const _i3.StartUpView();
         }),
     LoginRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i5.LoginView();
+          return _i4.LoginView();
         }),
     RegisterRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return _i6.RegisterView();
+          return _i5.RegisterView();
         }),
     TabNavigationBuilderRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return const _i7.TabNavigationBuilderView();
+          return const _i6.TabNavigationBuilderView();
         }),
     HomeTab.name: (routeData) => _i1.CustomPage<dynamic>(
         routeData: routeData,
@@ -87,39 +81,39 @@ class AppRouter extends _i1.RootStackRouter {
     HomeRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return const _i8.HomeView();
+          return const _i7.HomeView();
         }),
-    HomeDetailRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
+    EventDetailRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
-        builder: (_) {
-          return const _i9.HomeDetailView();
+        builder: (data) {
+          final args = data.argsAs<EventDetailRouteArgs>();
+          return _i8.EventDetailView(key: args.key, event: args.event);
         }),
     OrganizationRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return const _i10.OrganizationView();
+          return const _i9.OrganizationView();
         }),
     OrganizationDetailRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return const _i11.OrganizationDetailView();
+          return const _i10.OrganizationDetailView();
         }),
     InboxRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return const _i12.InboxView();
+          return const _i11.InboxView();
         }),
     InboxDetailRoute.name: (routeData) => _i1.AdaptivePage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return const _i13.InboxDetailView();
+          return const _i12.InboxDetailView();
         })
   };
 
   @override
   List<_i1.RouteConfig> get routes => [
-        _i1.RouteConfig(LandingPageBuilder.name, path: '/'),
-        _i1.RouteConfig(StartUpRoute.name, path: '/start-up-view'),
+        _i1.RouteConfig(StartUpRoute.name, path: '/'),
         _i1.RouteConfig(LoginRoute.name, path: '/login-view'),
         _i1.RouteConfig(RegisterRoute.name, path: '/register-view'),
         _i1.RouteConfig(TabNavigationBuilderRoute.name,
@@ -127,7 +121,7 @@ class AppRouter extends _i1.RootStackRouter {
             children: [
               _i1.RouteConfig(HomeTab.name, path: 'home', children: [
                 _i1.RouteConfig(HomeRoute.name, path: ''),
-                _i1.RouteConfig(HomeDetailRoute.name, path: 'home-detail')
+                _i1.RouteConfig(EventDetailRoute.name, path: 'event-detail')
               ]),
               _i1.RouteConfig(OrganizationTab.name,
                   path: 'organization',
@@ -148,14 +142,8 @@ class AppRouter extends _i1.RootStackRouter {
       ];
 }
 
-class LandingPageBuilder extends _i1.PageRouteInfo {
-  const LandingPageBuilder() : super(name, path: '/');
-
-  static const String name = 'LandingPageBuilder';
-}
-
 class StartUpRoute extends _i1.PageRouteInfo {
-  const StartUpRoute() : super(name, path: '/start-up-view');
+  const StartUpRoute() : super(name, path: '/');
 
   static const String name = 'StartUpRoute';
 }
@@ -207,10 +195,21 @@ class HomeRoute extends _i1.PageRouteInfo {
   static const String name = 'HomeRoute';
 }
 
-class HomeDetailRoute extends _i1.PageRouteInfo {
-  const HomeDetailRoute() : super(name, path: 'home-detail');
+class EventDetailRoute extends _i1.PageRouteInfo<EventDetailRouteArgs> {
+  EventDetailRoute({_i2.Key? key, required _i13.Events event})
+      : super(name,
+            path: 'event-detail',
+            args: EventDetailRouteArgs(key: key, event: event));
 
-  static const String name = 'HomeDetailRoute';
+  static const String name = 'EventDetailRoute';
+}
+
+class EventDetailRouteArgs {
+  const EventDetailRouteArgs({this.key, required this.event});
+
+  final _i2.Key? key;
+
+  final _i13.Events event;
 }
 
 class OrganizationRoute extends _i1.PageRouteInfo {
