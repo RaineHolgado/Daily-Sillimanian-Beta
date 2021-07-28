@@ -1,11 +1,15 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:daily_sillimanian_beta/helpers/dsb_theme.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:daily_sillimanian_beta/app/router.gr.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
       // statusBarColor: Color(0xFFBB1017),

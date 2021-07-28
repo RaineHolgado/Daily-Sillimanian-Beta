@@ -1,33 +1,54 @@
 import 'package:daily_sillimanian_beta/helpers/constants.dart';
-import 'package:daily_sillimanian_beta/screens/tab_navigation/home/dummy_events.dart';
+import 'package:daily_sillimanian_beta/screens/tab_navigation/home/upcoming_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:daily_sillimanian_beta/app/router.gr.dart';
 
-class UpcomingView extends StatelessWidget {
+class UpcomingView extends ConsumerWidget {
   const UpcomingView({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        for (var events in DummyEvents.items) ...[
-          EventCard(
-            onTapCard: () {
-              context.router.push(HomeDetailRoute());
-            },
-            posterImage: events.posterImage,
-            orgLogo: events.orgLogo,
-            organization: events.organization,
-            title: events.title,
-            onTapNotification: () {},
-            date: events.date,
-          ),
-          SizedBox(height: 15),
-        ]
-      ],
-    );
+  Widget build(BuildContext context, WidgetRef ref) {
+    final eventsValue = ref.watch(upcomingControllerProvider);
+
+    return eventsValue.when(
+        data: (events) {
+          if (events.isNotEmpty) {
+            return Column(
+              children: [
+                for (var event in events) ...[
+                  EventCard(
+                    imageTag: event.id!,
+                    onTapCard: () {
+                      context.router.push(EventDetailRoute(event: event));
+                    },
+                    posterImage: event.eventImage,
+                    orgLogo: event.orgLogo,
+                    organization: event.orgName,
+                    title: event.title,
+                    onTapNotification: () {},
+                    date: event.toDate,
+                  ),
+                  SizedBox(height: 15),
+                ]
+              ],
+            );
+          } else {
+            return Center(
+              child: Text("No events posted"),
+            );
+          }
+        },
+        loading: () => Center(
+              child: CircularProgressIndicator(),
+            ),
+        error: (err, st) {
+          return Center(
+            child: Text("$err"),
+          );
+        });
   }
 }
 
@@ -41,15 +62,17 @@ class EventCard extends StatelessWidget {
     required this.title,
     required this.onTapNotification,
     required this.date,
+    required this.imageTag,
   }) : super(key: key);
 
   final VoidCallback onTapCard;
-  final String posterImage;
-  final String orgLogo;
-  final String organization;
-  final String title;
+  final String? posterImage;
+  final String? orgLogo;
+  final String? organization;
+  final String? title;
   final VoidCallback onTapNotification;
-  final String date;
+  final String? date;
+  final String imageTag;
 
   @override
   Widget build(BuildContext context) {
@@ -61,53 +84,56 @@ class EventCard extends StatelessWidget {
         children: [
           GestureDetector(
             onTap: onTapCard,
-            child: Container(
-              height: 300,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5),
-                image: DecorationImage(
-                    image: AssetImage(posterImage), fit: BoxFit.cover),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 12.0, vertical: 10.0),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Container(
-                          width: 35.0,
-                          height: 35.0,
-                          decoration: new BoxDecoration(
-                            color: const Color(0xff7c94b6),
-                            image: new DecorationImage(
-                              image: new AssetImage(orgLogo),
-                              fit: BoxFit.contain,
-                            ),
-                            borderRadius:
-                                new BorderRadius.all(new Radius.circular(50.0)),
-                            border: new Border.all(
-                              color: Colors.white,
-                              width: 1.0,
+            child: Hero(
+              tag: "$imageTag",
+              child: Container(
+                height: 300,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  image: DecorationImage(
+                      image: AssetImage(posterImage!), fit: BoxFit.cover),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 12.0, vertical: 10.0),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Container(
+                            width: 35.0,
+                            height: 35.0,
+                            decoration: new BoxDecoration(
+                              color: const Color(0xff7c94b6),
+                              image: new DecorationImage(
+                                image: new AssetImage(orgLogo!),
+                                fit: BoxFit.contain,
+                              ),
+                              borderRadius: new BorderRadius.all(
+                                  new Radius.circular(50.0)),
+                              border: new Border.all(
+                                color: Colors.white,
+                                width: 1.0,
+                              ),
                             ),
                           ),
-                        ),
-                        SizedBox(width: 6),
-                        Text(
-                          organization,
-                          style: Theme.of(context)
-                              .primaryTextTheme
-                              .overline!
-                              .copyWith(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                              ),
-                        )
-                      ],
-                    ),
-                  ],
+                          SizedBox(width: 6),
+                          Text(
+                            organization!,
+                            style: Theme.of(context)
+                                .primaryTextTheme
+                                .overline!
+                                .copyWith(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -119,7 +145,7 @@ class EventCard extends StatelessWidget {
             children: [
               Expanded(
                 child: Text(
-                  title,
+                  "$title",
                   style: Theme.of(context).primaryTextTheme.bodyText2,
                 ),
               ),
@@ -143,7 +169,7 @@ class EventCard extends StatelessWidget {
               ),
               SizedBox(width: 5),
               Text(
-                date,
+                "$date",
                 style: Theme.of(context)
                     .primaryTextTheme
                     .overline!

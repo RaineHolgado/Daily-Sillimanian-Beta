@@ -19,8 +19,7 @@ class Result {
 
 class FailureService {
   static Result result = Result();
-  
-  // TODO - Create user friendly error message
+
   static Result errorResult(e) {
     switch (e.code) {
       case "invalid-email":
@@ -36,6 +35,20 @@ class FailureService {
         result.eMessage = e.message;
         result.type = e.runtimeType.toString();
         result.error = "The password is incorrect.";
+        break;
+      case "user-not-found":
+        result.boolResult = false;
+        result.eCode = e.code;
+        result.eMessage = e.message;
+        result.type = e.runtimeType.toString();
+        result.error = "No user found with that email";
+        break;
+      case "email-already-in-use":
+        result.boolResult = false;
+        result.eCode = e.code;
+        result.eMessage = e.message;
+        result.type = e.runtimeType.toString();
+        result.error = "An account already exist on that email";
         break;
       default:
         result.boolResult = false;
