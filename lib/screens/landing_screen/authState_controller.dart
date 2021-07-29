@@ -46,7 +46,7 @@ class AuthStateController extends ChangeNotifier {
         passwordController.text == retypePasswordController.text &&
         isCheck) {
       try {
-        ref.read(userServiceProvider.notifier).register(
+        await ref.read(userServiceProvider.notifier).register(
               email: emailController.text.trim(),
               password: passwordController.text.trim(),
             );

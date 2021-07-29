@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:daily_sillimanian_beta/models/events_model.dart';
+import 'package:daily_sillimanian_beta/models/event_model.dart';
 import 'package:daily_sillimanian_beta/services/firebaseFirestore_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

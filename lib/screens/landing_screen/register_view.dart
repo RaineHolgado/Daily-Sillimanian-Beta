@@ -4,7 +4,7 @@ import 'package:daily_sillimanian_beta/common/auth_checkbox.dart';
 import 'package:daily_sillimanian_beta/common/auth_elevatedbutton.dart';
 import 'package:daily_sillimanian_beta/common/auth_header.dart';
 import 'package:daily_sillimanian_beta/common/auth_textformfield.dart';
-import 'package:daily_sillimanian_beta/common/dsb_scaffold.dart';
+import 'package:daily_sillimanian_beta/app_layout/scaffold/dsb_scaffold.dart';
 import 'package:daily_sillimanian_beta/helpers/constants.dart';
 import 'package:daily_sillimanian_beta/screens/landing_screen/authState_controller.dart';
 import 'package:daily_sillimanian_beta/services/user_service.dart';

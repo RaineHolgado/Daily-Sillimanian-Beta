@@ -20,7 +20,7 @@ class IUserRepository implements UserRepository {
     try {
       DocumentReference<Map<String, dynamic>> _docRef = await ref
           .read(firebaseFirestoreServiceProvider)
-          .userColRef
+          .usersColRef
           .doc(userModel.id);
       _docRef.set(userModel.toMap());
       return userModel;
@@ -34,7 +34,7 @@ class IUserRepository implements UserRepository {
     try {
       return await ref
           .read(firebaseFirestoreServiceProvider)
-          .userColRef
+          .usersColRef
           .doc(uid)
           .get()
           .then((value) => UserModel.fromMap(value.data()));

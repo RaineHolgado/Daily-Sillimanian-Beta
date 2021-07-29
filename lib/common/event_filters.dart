@@ -3,12 +3,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 // Filters for switching between UPCOMING and TODAY page.
-class MainFilters extends StatelessWidget {
+class EventFilters extends StatelessWidget {
   final VoidCallback onUpcomingPressed;
   final VoidCallback onTodayPressed;
   final int selectedIndex;
 
-  const MainFilters({
+  const EventFilters({
     Key? key,
     required this.onUpcomingPressed,
     required this.onTodayPressed,
