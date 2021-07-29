@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:daily_sillimanian_beta/app_layout/drawer/dsb_drawer.dart';
 import 'package:daily_sillimanian_beta/helpers/constants.dart';
 import 'package:daily_sillimanian_beta/screens/tab_navigation/tabNavigationItem.dart';
 import 'package:daily_sillimanian_beta/services/user_service.dart';
@@ -52,6 +53,8 @@ class TabNavigationBuilderView extends ConsumerWidget {
         ),
       ),
       child: AutoTabsScaffold(
+        drawer: DsbDrawer(),
+        drawerEdgeDragWidth: 50,
         routes: [
           for (final tabItem in TabNavigationItem.items) tabItem.page,
         ],

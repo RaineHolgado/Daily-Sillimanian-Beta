@@ -5,7 +5,7 @@ import 'package:daily_sillimanian_beta/services/user_service.dart';
 import 'package:flutter/material.dart';
 import 'package:daily_sillimanian_beta/common/auth_elevatedbutton.dart';
 import 'package:daily_sillimanian_beta/common/auth_textformfield.dart';
-import 'package:daily_sillimanian_beta/common/dsb_scaffold.dart';
+import 'package:daily_sillimanian_beta/app_layout/scaffold/dsb_scaffold.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class LoginView extends ConsumerWidget {

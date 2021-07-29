@@ -8,7 +8,7 @@ final firebaseFirestoreServiceProvider = Provider((ref) => FirebaseFirestoreServ
 class FirebaseFirestoreService {
   final FirebaseFirestore firebaseFiretore = FirebaseFirestore.instance;
 
-  late final CollectionReference<Map<String, dynamic>> userColRef = firebaseFiretore.collection("Users");
+  late final CollectionReference<Map<String, dynamic>> usersColRef = firebaseFiretore.collection("Users");
   late final CollectionReference<Map<String, dynamic>> eventsColRef = firebaseFiretore.collection("Events");
-  late final CollectionReference<Map<String, dynamic>> activitiessColRef = firebaseFiretore.collection("Activities");
+  late final CollectionReference<Map<String, dynamic>> organizationsColRef = firebaseFiretore.collection("Organizations");
 }

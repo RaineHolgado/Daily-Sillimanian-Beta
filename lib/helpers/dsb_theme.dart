@@ -45,8 +45,9 @@ class DailySillimanTheme {
         ),
         titleTextStyle: TextStyle(
           fontSize: 20,
-          fontWeight: FontWeight.w400,
+          fontWeight: FontWeight.w700,
           color: blackAppColor,
+          letterSpacing: 0.05
         ),
       ),
 

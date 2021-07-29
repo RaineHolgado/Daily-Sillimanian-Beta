@@ -1,4 +1,4 @@
-import 'package:daily_sillimanian_beta/common/main_filters.dart';
+import 'package:daily_sillimanian_beta/common/event_filters.dart';
 import 'package:daily_sillimanian_beta/helpers/constants.dart';
 import 'package:daily_sillimanian_beta/screens/tab_navigation/home/today_view.dart';
 import 'package:daily_sillimanian_beta/screens/tab_navigation/home/upcoming_view.dart';
@@ -21,15 +21,20 @@ class HomeView extends StatelessWidget {
         leading: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            CircleAvatar(
-              radius: 16,
-              backgroundColor: Color(0xFF0AC18A),
-              child: Text(
-                "T",
-                style: Theme.of(context)
-                    .primaryTextTheme
-                    .bodyText2!
-                    .copyWith(color: whiteAppcolor),
+            GestureDetector(
+              onTap: () {
+                Scaffold.of(context).openDrawer();
+              },
+              child: CircleAvatar(
+                radius: 16,
+                backgroundColor: Theme.of(context).colorScheme.secondary,
+                child: Text(
+                  "T",
+                  style: Theme.of(context)
+                      .primaryTextTheme
+                      .bodyText2!
+                      .copyWith(color: whiteAppcolor),
+                ),
               ),
             ),
           ],
@@ -57,7 +62,7 @@ class HomeView extends StatelessWidget {
           return Container(
             child: Column(
               children: [
-                MainFilters(
+                EventFilters(
                   selectedIndex: _events.selectedPageIndex,
                   onUpcomingPressed: () => _events.setSelectedPageIndex(0),
                   onTodayPressed: () => _events.setSelectedPageIndex(1),

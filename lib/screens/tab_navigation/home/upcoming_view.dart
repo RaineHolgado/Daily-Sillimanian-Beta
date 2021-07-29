@@ -36,13 +36,19 @@ class UpcomingView extends ConsumerWidget {
               ],
             );
           } else {
-            return Center(
-              child: Text("No events posted"),
+            return Padding(
+              padding: EdgeInsets.only(top: 30),
+              child: Center(
+                child: Text("No events posted"),
+              ),
             );
           }
         },
-        loading: () => Center(
-              child: CircularProgressIndicator(),
+        loading: () => Padding(
+              padding: EdgeInsets.only(top: 30),
+              child: Center(
+                child: CircularProgressIndicator(),
+              ),
             ),
         error: (err, st) {
           return Center(
